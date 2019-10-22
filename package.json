@@ -2,7 +2,16 @@
   "name": "react-context-hook",
   "version": "1.0.0",
   "description": "A React.js global state manager with Hooks and Context API",
-  "author": "Spyna",
+  "author": "Spyna (https://github.com/Spyna)",
+  "keyword": [
+    "react",
+    "state",
+    "store",
+    "reactjs",
+    "hooks",
+    "contextApi"
+  ],
+  "homepage": "https://spyna.github.io/react-context-hooks/",
   "license": "MIT",
   "repository": "Spyna/react-context-hook",
   "main": "dist/index.js",
