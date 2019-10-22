@@ -12,23 +12,8 @@ npm install --save react-context-hook
 
 ## Usage
 
-```jsx
-import React, { Component } from 'react'
-
-import { useMyHook } from 'react-context-hook'
-
-const Example = () => {
-  const example = useMyHook()
-  return (
-    <div>{example}</div>
-  )
-}
-```
+will come soon
 
 ## License
 
 MIT © [Spyna](https://github.com/Spyna)
-
----
-
-This hook is created using [create-react-hook](https://github.com/hermanya/create-react-hook).

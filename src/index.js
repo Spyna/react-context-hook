@@ -1,21 +1,24 @@
-import * as React from 'react'
+import { createStore, rawStore } from './createStore'
+import {
+  useStore,
+  useStoreState,
+  useStoreValue,
+  useSetStoreValue,
+  useDeleteStoreValue,
+  useGetAndset,
+  useGetAndDelete,
+  useSetAndDelete
+} from './useStore'
 
-export const useMyHook = () => {
-  let [{
-    counter
-  }, setState] = React.useState({
-    counter: 0
-  })
-
-  React.useEffect(() => {
-    let interval = window.setInterval(() => {
-      counter++
-      setState({counter})
-    }, 1000)
-    return () => {
-      window.clearInterval(interval)
-    }
-  }, [])
-
-  return counter
+export {
+  createStore,
+  rawStore,
+  useStore,
+  useStoreState,
+  useStoreValue,
+  useSetStoreValue,
+  useDeleteStoreValue,
+  useGetAndset,
+  useGetAndDelete,
+  useSetAndDelete
 }
