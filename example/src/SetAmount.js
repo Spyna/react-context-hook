@@ -2,7 +2,7 @@ import React from 'react'
 import { useStore } from 'react-context-hook'
 
 export default function() {
-  const [count, setCount, deleteCount ] = useStore('count', 0)
+  const [count, setCount, deleteCount] = useStore('count', 0)
   return (
     <section>
       <h3>
