@@ -30,11 +30,11 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "prepare": "yarn run build",
-    "predeploy": "yarn docs:build && cp -r dist_docs example/public && cd example && yarn install && yarn run build ",
+    "predeploy": "yarn docs:build && cd example && yarn install && yarn run build && cd .. && cp -r docs example/build",
     "deploy": "gh-pages -d example/build --message \"[skip ci] Updates\"",
     "release": "standard-version",
     "prettier": "prettier --write 'src/**/*.js' 'example/**/*.css' 'example/**/*.html' 'example/src/**/*.js'",
-    "docs:build": "documentation build src/** -f html -o dist_docs"
+    "docs:build": "documentation build src/** -f html -o docs"
   },
   "peerDependencies": {
     "react": "^16.8.6",
