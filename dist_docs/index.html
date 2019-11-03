@@ -1,0 +1,951 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>react-context-hook 1.1.1 | Documentation</title>
+  <meta name='description' content='A React.js global state manager with Hooks and Context API'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' rel='stylesheet'>
+  <link href='assets/style.css' rel='stylesheet'>
+  <link href='assets/github.css' rel='stylesheet'>
+  <link href='assets/split.css' rel='stylesheet'>
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'>react-context-hook</h3>
+          <div class='mb1'><code>1.1.1</code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#createstore'
+                  class="">
+                  createStore
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#usestore'
+                  class="">
+                  useStore
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#usestorestate'
+                  class="">
+                  useStoreState
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#usesetstorevalue'
+                  class="">
+                  useSetStoreValue
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#usedeletestorevalue'
+                  class="">
+                  useDeleteStoreValue
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#usegetandset'
+                  class="">
+                  useGetAndset
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#usegetanddelete'
+                  class="">
+                  useGetAndDelete
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#usesetanddelete'
+                  class="">
+                  useSetAndDelete
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#usestorevalue'
+                  class="">
+                  useStoreValue
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='https://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='createstore'>
+      createStore
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>createStore</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>WrappedComponent</span> <code class='quiet'>(ReactElement)</code>
+	    the component to connect with the store
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>initialValue</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    the initial store value or nothing
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>config</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    the custom configuration. If nothing is passed will use the default config
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>config.listener</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a></code>
+  </td>
+  <td class='break-word'><span>a function that is triggered each time the store is modified.
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>config.proxyStore</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>
+  </td>
+  <td class='break-word'><span>default 
+<code>true</code>
+ - if true the store will be protected by a Proxy. Set to false if your environment does not support Proxy. If you use 
+<code>react-context-hook</code>
+ in the browser set it to true
+</span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> initialState = { <span class="hljs-attr">count</span>: <span class="hljs-number">10</span> }
+
+<span class="hljs-keyword">const</span> storeConfig = {
+ <span class="hljs-attr">listener</span>: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> {
+   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'state changed'</span>, state)
+ },
+ <span class="hljs-attr">logging</span>: <span class="hljs-literal">true</span> <span class="hljs-comment">//process.env.NODE_ENV !== 'production'</span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> createStore(App, initialState, storeConfig)</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='usestore'>
+      useStore
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>useStore(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, defaultValue: any, createIfMissing: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>key</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The lookup key to find the saved value in the store
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>defaultValue</span> <code class='quiet'>(any)</code>
+	    The value if the value in the store is missing
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>createIfMissing</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</code>
+	    if true and the data is missing it will be created in the store
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></code>:
+        an array with length 3:
+<br>
+
+position 0 - the value of the data in the store.
+<br>
+
+position 1 - a function 
+<em>setValue</em>
+ to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use 
+<code>setValue('a value').then(() => {doSomething() //when the store did update})</code>
+<br>
+
+position 2 - a function 
+<em>deleteValue</em>
+ to delete the value from the store. When used, this function return a promise that resolve nothing, thus you can use 
+<code>deleteValue('a value').then(() => {doSomething() //when the store did update})</code>
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>import {useStore} from 'react-context-hook'
+const [username, setUsername, deleteUsername] = useStore('username')
+&lt;div&gt;hello {username}&lt;/div&gt;
+&lt;button onClick={()=&gt; setUsername('my_username')}&gt;set username&lt;/button&gt;</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='usestorestate'>
+      useStoreState
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Returns the whole store value, with all the variables stored in it. Changes to this object will not change the store</p>
+
+    <div class='pre p1 fill-light mt0'>useStoreState(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        An object representing the whole store value in read only mode.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> {useStoreState} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-context-hook'</span>
+<span class="hljs-keyword">const</span> store = useStoreState()
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'the store is'</span>, <span class="hljs-built_in">JSON</span>.stringify(store))</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='usesetstorevalue'>
+      useSetStoreValue
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Returns a function to set or update a variable in the store. You want to use this hook when you just need to modify the store, not read or delete a value from it.</p>
+
+    <div class='pre p1 fill-light mt0'>useSetStoreValue(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>key</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    the name of the variable to set in the store
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a></code>:
+        a function to set a variable in the store with the given name When used, this function return a promise that resolve nothing, thus you can use 
+<code>setValue('a value').then(() => {doSomething() //when the store did update})</code>
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> {useSetStoreValue} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-context-hook'</span>
+<span class="hljs-keyword">const</span> setUsername = useSetStoreValue(<span class="hljs-string">'username'</span>)
+&lt;button onClick={()=&gt; setUsername(<span class="hljs-string">'my_username'</span>)}&gt;<span class="hljs-keyword">set</span> username&lt;/button&gt;</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='usedeletestorevalue'>
+      useDeleteStoreValue
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Returns a function to delete a variable in the store. You want to use this hook when you just need to delete a value in the store, not read or set a value from it.</p>
+
+    <div class='pre p1 fill-light mt0'>useDeleteStoreValue(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>key</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    the name of the variable to set in the store
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a></code>:
+        a function to delete a variable in the store with the given name. When used, this function return a promise that resolve nothing, thus you can use 
+<code>deleteValue('a value').then(() => {doSomething() //when the store did update})</code>
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> {useDeleteStoreValue} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-context-hook'</span>
+<span class="hljs-keyword">const</span> deleteUsername = useDeleteStoreValue(<span class="hljs-string">'username'</span>)
+&lt;button onClick={()=&gt; deleteUsername(<span class="hljs-string">'my_username'</span>)}&gt;<span class="hljs-keyword">set</span> username&lt;/button&gt;</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='usegetandset'>
+      useGetAndset
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>This React hook returns an array to read and modify a value in the store:
+<code>const [value, setValue] = useGetAndset('a_lookup_key_in_the_store')</code>. The name of the variable in the arry is arbitrary and you can choose any string you like.</p>
+
+    <div class='pre p1 fill-light mt0'>useGetAndset(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>key</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The lookup key to find the saved value in the store
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></code>:
+        an array with length 2:
+<br>
+
+position 0 - the value of the data in the store.
+<br>
+
+position 1 - a function 
+<em>setValue</em>
+ to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use 
+<code>setValue('a value').then(() => {doSomething() //when the store did update})</code>
+<br>
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>import {useGetAndset} from 'react-context-hook'
+const [username, setUsername] = useGetAndset('username')
+&lt;div&gt;hello {username}&lt;/div&gt;
+&lt;button onClick={()=&gt; setUsername('my_username')}&gt;set username&lt;/button&gt;
+
+ const [value, setValue] = useGetAndset('a_lookup_key_in_the_store')</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='usegetanddelete'>
+      useGetAndDelete
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>This React hook returns an array to read and delete a value in the store:
+<code>const [value, deleteValue] = useGetAndDelete('a_lookup_key_in_the_store')</code>. The name of the variable in the arry is arbitrary and you can choose any string you like.</p>
+
+    <div class='pre p1 fill-light mt0'>useGetAndDelete(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>key</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The lookup key to find the saved value in the store
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></code>:
+        an array with length 2:
+<br>
+
+position 0 - the value of the data in the store.
+<br>
+
+position 1 - a function 
+<em>deleteValue</em>
+ to delete the data in the store. When used, this function return a promise that resolve nothing, thus you can use 
+<code>deleteValue('a value').then(() => {doSomething() //when the store did update})</code>
+<br>
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>import {useGetAndDelete} from 'react-context-hook'
+const [username, deleteUsername] = useGetAndDelete('username')
+&lt;div&gt;hello {username}&lt;/div&gt;
+&lt;button onClick={()=&gt; deleteUsername('my_username')}&gt;set username&lt;/button&gt;</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='usesetanddelete'>
+      useSetAndDelete
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>This React hook returns an array to set and delete a value in the store:
+<code>const [setValue, deleteValue] = useGetAndDelete('a_lookup_key_in_the_store')</code>. The name of the variable in the arry is arbitrary and you can choose any string you like.</p>
+
+    <div class='pre p1 fill-light mt0'>useSetAndDelete(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>key</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The lookup key to find the saved value in the store
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></code>:
+        an array with length 2:
+<br>
+
+position 0 - a function 
+<em>setValue</em>
+ to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use 
+<code>setValue('a value').then(() => {doSomething() //when the store did update})</code>
+<br>
+
+position 1 - a function 
+<em>deleteValue</em>
+ to delete the data in the store. When used, this function return a promise that resolve nothing, thus you can use 
+<code>deleteValue('a value').then(() => {doSomething() //when the store did update})</code>
+<br>
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>import {useGetAndDelete} from 'react-context-hook'
+const [username, deleteUsername] = useGetAndDelete('username')
+&lt;div&gt;hello {username}&lt;/div&gt;
+&lt;button onClick={()=&gt; deleteUsername('my_username')}&gt;set username&lt;/button&gt;</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='usestorevalue'>
+      useStoreValue
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>useStoreValue(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, defaultValue: any?): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>key</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    the name of the variable / value to be retrieved in the global store.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>defaultValue</span> <code class='quiet'>(any?)</code>
+	    an optional default value, if the value in the global store is not present.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        the value on the global store, or the default value if passed, or 
+<code>undefined</code>
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>
