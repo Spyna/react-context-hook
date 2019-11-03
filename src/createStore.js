@@ -8,6 +8,8 @@ let rawStore
  * @param {ReactElement} WrappedComponent the component to connect with the store
  * @param {Object} initialValue the initial store value or nothing
  * @param {Object} config the custom configuration. If nothing is passed will use the default config
+ *
+ * @example ../docs/createStore.examples.md
  */
 const createStore = (WrappedComponent, initialValue, config) => {
   return function(props) {
