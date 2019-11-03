@@ -17,3 +17,6 @@ will come soon
 ## License
 
 MIT © [Spyna](https://github.com/Spyna)
+
+
+[![Analytics](https://ga-beacon.appspot.com/UA-89584671-2/github/react-context-hook)](https://github.com/igrigorik/ga-beacon)
