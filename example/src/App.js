@@ -1,5 +1,6 @@
 import React from 'react'
 import { createStore, useStoreState } from 'react-context-hook'
+import Header from './layout/Header'
 import SetAmount from './SetAmount'
 import SetString from './SetString'
 import nonComponent from './nonComponent'
@@ -8,14 +9,14 @@ import SetObject from './SetObject'
 import UseStoreExample from './UseStoreExample'
 import UseSetAndDeleteExample from './UseSetAndDeleteExample'
 
-function App({ title, subtitle }) {
+function App() {
   const globalState = useStoreState()
   return (
     <div className="App">
-      <header className="App-header">
-        <h2>{title}</h2>
-        <p>{subtitle}</p>
-      </header>
+      <Header
+        title="React context Hook"
+        subtitle="A 1.2kB library to manage the global state with the Context API and React hooks"
+      />
       <section>
         <h3>
           This is a React App that has a global state. This is the global{' '}

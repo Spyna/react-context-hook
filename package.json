@@ -27,14 +27,15 @@
   "scripts": {
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "build": "rollup -c",
+    "build": "rollup -c && yarn docs:buildmd",
     "start": "rollup -c -w",
     "prepare": "yarn run build",
-    "predeploy": "yarn docs:build && cd example && yarn install && yarn run build && cd .. && cp -r docs example/build",
+    "predeploy": "yarn docs:build && cd example && yarn install && yarn run build && cd .. && cp -r docs example/build && yarn docs:buildjson",
     "deploy": "gh-pages -d example/build --message \"[skip ci] Updates\"",
     "release": "standard-version",
     "prettier": "prettier --write 'src/**/*.js' 'example/**/*.css' 'example/**/*.html' 'example/src/**/*.js'",
-    "docs:build": "documentation build src/** -f html -o docs"
+    "docs:build": "documentation build src/** -f html -o docs",
+    "docs:buildmd": "documentation build src/** -f md -o DOCS.md"
   },
   "peerDependencies": {
     "react": "^16.8.6",

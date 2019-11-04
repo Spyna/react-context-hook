@@ -9,7 +9,11 @@
   background-color: #282c34;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding: 16px;
+  padding: 0 0;
+}
+
+.App-header div {
+  padding: 8px 16px;
 }
 
 .App-link {
@@ -114,4 +118,29 @@ pre {
 code {
   background-color: #efefef;
   padding: 2px 5px;
+}
+
+
+
+/* # nav menu */
+
+nav {
+  width: 100%;
+  border-bottom:2px solid #ccc;
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  margin: 5px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+nav ul li a {
+  padding: 5px;
+  color:white;
+  text-decoration: none;
 }

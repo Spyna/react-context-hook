@@ -2,7 +2,7 @@ import React from 'react'
 import { useStore } from 'react-context-hook'
 
 export default function() {
-  const { username, setUsername } = useStore('username', 'spyna', true)
+  const [ username, setUsername ] = useStore('username', 'spyna', true)
   const [textValue, setTextValue] = React.useState(username)
   function onChange(event) {
     setTextValue(event.target.value)
