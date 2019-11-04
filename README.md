@@ -12,7 +12,11 @@ npm install --save react-context-hook
 
 ## Documentation
 
-Read the documentation of `react-context-hook` at [Documentation](https://spyna.github.io/react-context-hook/docs/)
+Read the documentation of `react-context-hook`: 
+
+* [Documentation in HTML format](https://spyna.github.io/react-context-hook/docs/)
+
+*[Documentation in Github MarkDown](./DOCS.md)
 
 ## Usage
 
