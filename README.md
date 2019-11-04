@@ -16,7 +16,7 @@ Read the documentation of `react-context-hook`:
 
 * [Documentation in HTML format](https://spyna.github.io/react-context-hook/docs/)
 
-*[Documentation in Github MarkDown](./DOCS.md)
+* [Documentation in Github MarkDown](./DOCS.md)
 
 ## Usage
 
