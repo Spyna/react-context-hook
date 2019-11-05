@@ -30,7 +30,7 @@
     "build": "rollup -c && yarn docs:buildmd",
     "start": "rollup -c -w",
     "prepare": "yarn run build",
-    "predeploy": "yarn docs:build && cd example && yarn install && yarn run build && cd .. && cp -r docs example/build && yarn docs:buildjson",
+    "predeploy": "yarn docs:build && cd example && yarn install && yarn run build && cd .. && cp -r docs example/build",
     "deploy": "gh-pages -d example/build --message \"[skip ci] Updates\"",
     "release": "standard-version",
     "prettier": "prettier --write 'src/**/*.js' 'example/**/*.css' 'example/**/*.html' 'example/src/**/*.js'",
