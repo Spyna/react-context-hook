@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8'>
-  <title>react-context-hook 1.1.1 | Documentation</title>
+  <title>react-context-hook 1.1.2 | Documentation</title>
   <meta name='description' content='A React.js global state manager with Hooks and Context API'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet'>
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>react-context-hook</h3>
-          <div class='mb1'><code>1.1.1</code></div>
+          <div class='mb1'><code>1.1.2</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -23,16 +23,6 @@
             type='text' />
           <div id='toc'>
             <ul class='list-reset h5 py1-ul'>
-              
-                
-                <li><a
-                  href='#createstore'
-                  class="">
-                  createStore
-                  
-                </a>
-                
-                </li>
               
                 
                 <li><a
@@ -114,6 +104,16 @@
                 
                 </li>
               
+                
+                <li><a
+                  href='#withstore'
+                  class="">
+                  withStore
+                  
+                </a>
+                
+                </li>
+              
             </ul>
           </div>
           <div class='mt1 h6 quiet'>
@@ -122,138 +122,6 @@
         </div>
       </div>
       <div id='split-right' class='relative overflow-auto height-viewport-100'>
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='createstore'>
-      createStore
-    </h3>
-    
-    
-  </div>
-  
-
-  
-    <div class='pre p1 fill-light mt0'>createStore</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>WrappedComponent</span> <code class='quiet'>(ReactElement)</code>
-	    the component to connect with the store
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>initialValue</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    the initial store value or nothing
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>config</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
-	    the custom configuration. If nothing is passed will use the default config
-
-          </div>
-          
-          <table class='mt1 mb2 fixed-table h5 col-12'>
-            <colgroup>
-              <col width='30%' />
-              <col width='70%' />
-            </colgroup>
-            <thead>
-              <tr class='bold fill-light'>
-                <th>Name</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody class='mt1'>
-              
-                <tr>
-  <td class='break-word'><span class='code bold'>config.listener</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a></code>
-  </td>
-  <td class='break-word'><span>a function that is triggered each time the store is modified.
-</span></td>
-</tr>
-
-
-              
-                <tr>
-  <td class='break-word'><span class='code bold'>config.proxyStore</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>
-  </td>
-  <td class='break-word'><span>default 
-<code>true</code>
- - if true the store will be protected by a Proxy. Set to false if your environment does not support Proxy. If you use 
-<code>react-context-hook</code>
- in the browser set it to true
-</span></td>
-</tr>
-
-
-              
-            </tbody>
-          </table>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Example</div>
-    
-      
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> initialState = { <span class="hljs-attr">count</span>: <span class="hljs-number">10</span> }
-
-<span class="hljs-keyword">const</span> storeConfig = {
- <span class="hljs-attr">listener</span>: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> {
-   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'state changed'</span>, state)
- },
- <span class="hljs-attr">logging</span>: <span class="hljs-literal">true</span> <span class="hljs-comment">//process.env.NODE_ENV !== 'production'</span>
-}
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> createStore(App, initialState, storeConfig)</pre>
-    
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
         
           
           <section class='p2 mb2 clearfix bg-white minishadow'>
@@ -929,6 +797,138 @@ const [username, deleteUsername] = useGetAndDelete('username')
 
   
 
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='withstore'>
+      withStore
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>withStore</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>WrappedComponent</span> <code class='quiet'>(ReactElement)</code>
+	    the component to connect with the store
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>initialValue</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    the initial store value or nothing
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>config</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</code>
+	    the custom configuration. If nothing is passed will use the default config
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>config.listener</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a></code>
+  </td>
+  <td class='break-word'><span>a function that is triggered each time the store is modified.
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>config.proxyStore</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>
+  </td>
+  <td class='break-word'><span>default 
+<code>true</code>
+ - if true the store will be protected by a Proxy. Set to false if your environment does not support Proxy. If you use 
+<code>react-context-hook</code>
+ in the browser set it to true
+</span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> initialState = { <span class="hljs-attr">count</span>: <span class="hljs-number">10</span> }
+
+<span class="hljs-keyword">const</span> storeConfig = {
+ <span class="hljs-attr">listener</span>: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> {
+   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'state changed'</span>, state)
+ },
+ <span class="hljs-attr">logging</span>: <span class="hljs-literal">true</span> <span class="hljs-comment">//process.env.NODE_ENV !== 'production'</span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> withStore(App, initialState, storeConfig)</pre>
+    
   
 
   
