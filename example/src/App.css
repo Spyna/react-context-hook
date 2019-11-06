@@ -120,13 +120,11 @@ code {
   padding: 2px 5px;
 }
 
-
-
 /* # nav menu */
 
 nav {
   width: 100%;
-  border-bottom:2px solid #ccc;
+  border-bottom: 2px solid #ccc;
   display: flex;
   align-items: center;
 }
@@ -141,6 +139,6 @@ nav ul li {
 
 nav ul li a {
   padding: 5px;
-  color:white;
+  color: white;
   text-decoration: none;
 }

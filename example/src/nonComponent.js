@@ -1,4 +1,4 @@
-import {  store } from 'react-context-hook'
+import { store } from 'react-context-hook'
 
 export default function() {
   store.set('count', 25).then(() => {

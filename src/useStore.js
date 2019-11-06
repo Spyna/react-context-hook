@@ -142,12 +142,11 @@ function useSetAndDelete(key) {
   return [useSetStoreValue(key), useDeleteStoreValue(key)]
 }
 
-
 /**
- * 
+ *
  * @param {string} key - the name of the variable / value to be retrieved in the global store.
  * @param {any} [defaultValue] - an optional default value, if the value in the global store is not present.
- * 
+ *
  * @returns {any} the value on the global store, or the default value if passed, or `undefined`
  */
 function useStoreValue(key, defaultValue) {

@@ -2,11 +2,7 @@ import { storeHandler } from './storeProxyHandler'
 import defaultConfig from './defaultConfig'
 import devTools from './devTools'
 
-export default function createStore(
-  config = defaultConfig,
-  state,
-  setState
-) {
+export default function createStore(config = defaultConfig, state, setState) {
   const userConfig = Object.freeze({ ...defaultConfig, ...config })
   const { listener, proxyStore, logging } = userConfig
   function updateState(storage) {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({title, subtitle}) => (
+export default ({ title, subtitle }) => (
   <header className="App-header">
     <nav>
       <ul>
