@@ -54,7 +54,7 @@
       },
       {
         "title": "example",
-        "description": "const initialState = { count: 10 }\n\nconst storeConfig = {\n listener: state => {\n   console.log('state changed', state)\n },\n logging: true //process.env.NODE_ENV !== 'production'\n}\n\nexport default createStore(App, initialState, storeConfig)",
+        "description": "const initialState = { count: 10 }\n\nconst storeConfig = {\n listener: state => {\n   console.log('state changed', state)\n },\n logging: true //process.env.NODE_ENV !== 'production'\n}\n\nexport default withStore(App, initialState, storeConfig)",
         "lineNumber": 6
       }
     ],
@@ -79,16 +79,16 @@
           "column": 1
         }
       },
-      "file": "/home/lspinelli/workspaces/my-github/react-context-hook/src/createStore.js",
+      "file": "/home/lspinelli/workspaces/my-github/react-context-hook/src/withStore.js",
       "github": {
-        "url": "https://git@github.com/:Spyna/react-context-hook/blob/6e2546239cbaf9efbe881bb73bb286d7af3f224e/src/createStore.js#L25-L36",
-        "path": "src/createStore.js"
+        "url": "https://git@github.com/:Spyna/react-context-hook/blob/6e2546239cbaf9efbe881bb73bb286d7af3f224e/src/withStore.js#L25-L36",
+        "path": "src/withStore.js"
       }
     },
     "augments": [],
     "examples": [
       {
-        "description": "const initialState = { count: 10 }\n\nconst storeConfig = {\n listener: state => {\n   console.log('state changed', state)\n },\n logging: true //process.env.NODE_ENV !== 'production'\n}\n\nexport default createStore(App, initialState, storeConfig)"
+        "description": "const initialState = { count: 10 }\n\nconst storeConfig = {\n listener: state => {\n   console.log('state changed', state)\n },\n logging: true //process.env.NODE_ENV !== 'production'\n}\n\nexport default withStore(App, initialState, storeConfig)"
       }
     ],
     "implements": [],
@@ -475,7 +475,7 @@
     "throws": [],
     "todos": [],
     "yields": [],
-    "name": "createStore",
+    "name": "withStore",
     "kind": "constant",
     "members": {
       "global": [],
@@ -486,11 +486,11 @@
     },
     "path": [
       {
-        "name": "createStore",
+        "name": "withStore",
         "kind": "constant"
       }
     ],
-    "namespace": "createStore"
+    "namespace": "withStore"
   },
   {
     "description": "",

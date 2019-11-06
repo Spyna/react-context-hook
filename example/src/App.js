@@ -1,5 +1,5 @@
 import React from 'react'
-import { createStore, useStoreState } from 'react-context-hook'
+import { withStore, useStoreState } from 'react-context-hook'
 import Header from './layout/Header'
 import SetAmount from './SetAmount'
 import SetString from './SetString'
@@ -53,4 +53,4 @@ const storeConfig = {
   logging: true //process.env.NODE_ENV !== 'production'
 }
 
-export default createStore(App, initialState, storeConfig)
+export default withStore(App, initialState, storeConfig)

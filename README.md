@@ -20,10 +20,10 @@ Read the documentation of `react-context-hook`:
 
 ## Usage
 
-Wrap your React App in the store Provider using the function `createStore`. 
+Wrap your React App in the store Provider using the function `withStore`. 
 
 ```JS
-import { createStore} from 'react-context-hook'
+import { withStore} from 'react-context-hook'
 
 const initialState = { count: 10 }
 
@@ -34,10 +34,10 @@ const storeConfig = {
   logging: true //process.env.NODE_ENV !== 'production'
 }
 
-export default createStore(App, initialState, storeConfig)
+export default withStore(App, initialState, storeConfig)
 ```
 
-`createStore` creates a React *Context.Provider* which wrap your application the value of the Provider is the **store**. The **store** is similar to a [Javascript Map](https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Global_Objects/Map) where you can put, read, and delete values by their key. 
+`withStore` creates a React *Context.Provider* which wrap your application the value of the Provider is the **store**. The **store** is similar to a [Javascript Map](https://developer.mozilla.org/it/docs/Web/JavaScript/Reference/Global_Objects/Map) where you can put, read, and delete values by their key. 
 
 For example `store.set('username',  {name: 'spyna', email: 'me@spyna.it'})` will set a `username` key in the store map. Then you can read, modify or delete it from the map using `store.get('username')` or `store.remove('username')`. 
 
@@ -46,7 +46,7 @@ However for convenience, in React Components you can use the hooks exported from
 
 ## Hooks
 
-### createStore - [doc](./DOCS.md#createstore)
+### withStore - [doc](./DOCS.md#withStore)
 ### useStore - [docs](./DOCS.md#usestore)
 ### useStoreState - [docs](./DOCS.md#usestorestate)
 ### useSetStoreValue - [docs](./DOCS.md#usesetstorevalue)

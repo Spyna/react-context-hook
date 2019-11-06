@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 import { act } from 'react-dom/test-utils'
-import { createStore } from './createStore'
+import { withStore } from './withStore'
 import {
   useStore,
   useStoreState,
@@ -34,7 +34,7 @@ describe('Use Store test', () => {
       const [value] = useStore('username')
       return <div>{value}</div>
     }
-    WithStore = createStore(App)
+    WithStore = withStore(App)
 
     act(() => {
       render(<WithStore />, container)
@@ -47,7 +47,7 @@ describe('Use Store test', () => {
       const [value] = useStore('username', 'test', true)
       return <div>{value}</div>
     }
-    WithStore = createStore(App)
+    WithStore = withStore(App)
 
     act(() => {
       render(<WithStore />, container)
@@ -67,7 +67,7 @@ describe('Use Store test', () => {
         </div>
       )
     }
-    WithStore = createStore(App)
+    WithStore = withStore(App)
 
     act(() => {
       render(<WithStore />, container)
@@ -97,7 +97,7 @@ describe('Use Store test', () => {
         </div>
       )
     }
-    WithStore = createStore(App)
+    WithStore = withStore(App)
 
     act(() => {
       render(<WithStore />, container)
@@ -128,7 +128,7 @@ describe('Use Store test', () => {
         </div>
       )
     }
-    WithStore = createStore(App)
+    WithStore = withStore(App)
 
     act(() => {
       render(<WithStore />, container)
@@ -159,7 +159,7 @@ describe('Use Store test', () => {
         </div>
       )
     }
-    WithStore = createStore(App)
+    WithStore = withStore(App)
 
     act(() => {
       render(<WithStore />, container)
@@ -186,7 +186,7 @@ describe('Use Store test', () => {
         </div>
       )
     }
-    WithStore = createStore(App)
+    WithStore = withStore(App)
 
     act(() => {
       render(<WithStore />, container)
@@ -200,7 +200,7 @@ describe('Use Store test', () => {
       return <div>{JSON.stringify(globalState)}</div>
     }
     const state = { test: true, key: 'a value' }
-    WithStore = createStore(App, state)
+    WithStore = withStore(App, state)
 
     act(() => {
       render(<WithStore />, container)
