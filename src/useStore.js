@@ -84,7 +84,7 @@ function useDeleteStoreValue(key) {
  *This React hook returns an array to read and modify a value in the store:
  * `const [value, setValue] = useGetAndset('a_lookup_key_in_the_store')`. The name of the variable in the arry is arbitrary and you can choose any string you like.
  * @param {string} key - The lookup key to find the saved value in the store
- *
+ * @param {any} defaultValue - The default value if missing
  * @returns {array} an array with length 2:<br>
  * position 0 - the value of the data in the store.<br>
  * position 1 - a function *setValue* to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
@@ -98,8 +98,8 @@ function useDeleteStoreValue(key) {
  *  const [value, setValue] = useGetAndset('a_lookup_key_in_the_store')
  *
  */
-function useGetAndset(key) {
-  return [useStoreValue(key), useSetStoreValue(key)]
+function useGetAndset(key, defaultValue) {
+  return [useStoreValue(key, defaultValue), useSetStoreValue(key)]
 }
 
 /**
