@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/Spyna/react-context-hook/compare/v1.1.2...v1.2.0) (2020-01-19)
+
+
+### Features
+
+* use default value in useGetAndSet hook ([4031e05](https://github.com/Spyna/react-context-hook/commit/4031e058568c3bd3839d01d1cd086b148bbccb73))
+
 ### [1.1.2](https://github.com/Spyna/react-context-hook/compare/v1.1.1...v1.1.2) (2019-11-06)
 
 
