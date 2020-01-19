@@ -473,7 +473,7 @@ const [username, setUsername, deleteUsername] = useStore('username')
   <p>This React hook returns an array to read and modify a value in the store:
 <code>const [value, setValue] = useGetAndset('a_lookup_key_in_the_store')</code>. The name of the variable in the arry is arbitrary and you can choose any string you like.</p>
 
-    <div class='pre p1 fill-light mt0'>useGetAndset(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></div>
+    <div class='pre p1 fill-light mt0'>useGetAndset(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, defaultValue: any): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></div>
   
   
 
@@ -492,6 +492,15 @@ const [username, setUsername, deleteUsername] = useStore('username')
           <div>
             <span class='code bold'>key</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
 	    The lookup key to find the saved value in the store
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>defaultValue</span> <code class='quiet'>(any)</code>
+	    The default value if missing
 
           </div>
           
