@@ -11,7 +11,7 @@
     "hooks",
     "contextApi"
   ],
-  "homepage": "https://spyna.github.io/react-context-hooks/",
+  "homepage": "https://spyna.github.io/react-context-hook/",
   "license": "MIT",
   "repository": "Spyna/react-context-hook",
   "main": "dist/index.js",
