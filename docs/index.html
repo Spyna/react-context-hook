@@ -68,6 +68,16 @@
                 <li><a
                   href='#usegetandset'
                   class="">
+                  useGetAndSet
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#usegetandset'
+                  class="">
                   useGetAndset
                   
                 </a>
@@ -137,7 +147,8 @@
   </div>
   
 
-  
+  <p><code>useStore</code> is a React Hook that access a value stored in the application global store. It returns the value, a function to update it (like React.useState) and a function to delete it.</p>
+
     <div class='pre p1 fill-light mt0'>useStore(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, defaultValue: any, createIfMissing: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></div>
   
   
@@ -463,7 +474,7 @@ const [username, setUsername, deleteUsername] = useStore('username')
   <div class='clearfix'>
     
     <h3 class='fl m0' id='usegetandset'>
-      useGetAndset
+      useGetAndSet
     </h3>
     
     
@@ -471,9 +482,9 @@ const [username, setUsername, deleteUsername] = useStore('username')
   
 
   <p>This React hook returns an array to read and modify a value in the store:
-<code>const [value, setValue] = useGetAndset('a_lookup_key_in_the_store')</code>. The name of the variable in the arry is arbitrary and you can choose any string you like.</p>
+<code>const [value, setValue] = useGetAndSet('a_lookup_key_in_the_store')</code>. The name of the variable in the arry is arbitrary and you can choose any string you like.</p>
 
-    <div class='pre p1 fill-light mt0'>useGetAndset(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, defaultValue: any): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></div>
+    <div class='pre p1 fill-light mt0'>useGetAndSet(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, defaultValue: any): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></div>
   
   
 
@@ -537,13 +548,82 @@ position 1 - a function
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'>import {useGetAndset} from 'react-context-hook'
-const [username, setUsername] = useGetAndset('username')
+      <pre class='p1 overflow-auto round fill-light'>import {useGetAndSet} from 'react-context-hook'
+const [username, setUsername] = useGetAndSet('username')
 &lt;div&gt;hello {username}&lt;/div&gt;
 &lt;button onClick={()=&gt; setUsername('my_username')}&gt;set username&lt;/button&gt;
 
- const [value, setValue] = useGetAndset('a_lookup_key_in_the_store')</pre>
+ const [value, setValue] = useGetAndSet('a_lookup_key_in_the_store')</pre>
     
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='usegetandset'>
+      useGetAndset
+    </h3>
+    
+    
+  </div>
+  
+
+  
+    <div class='pre p1 fill-light mt0'>useGetAndset(key: any, defaultValue: any)</div>
+  
+  
+
+  <div>Deprecated: since version 1.2.1. You should use useGetAndSet (with the "S") hook because this hook will be removed it the next minor release.
+</div>
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>key</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>defaultValue</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
   
 
   
