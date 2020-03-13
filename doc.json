@@ -1859,7 +1859,7 @@
             },
             {
               "type": "inlineCode",
-              "value": "const [value, setValue] = useGetAndset('a_lookup_key_in_the_store')",
+              "value": "const [value, setValue] = useGetAndSet('a_lookup_key_in_the_store')",
               "position": {
                 "start": {
                   "line": 2,
@@ -1944,7 +1944,7 @@
       },
       {
         "title": "example",
-        "description": "import {useGetAndset} from 'react-context-hook'\nconst [username, setUsername] = useGetAndset('username')\n<div>hello {username}</div>\n<button onClick={()=> setUsername('my_username')}>set username</button>\n\n const [value, setValue] = useGetAndset('a_lookup_key_in_the_store')",
+        "description": "import {useGetAndSet} from 'react-context-hook'\nconst [username, setUsername] = useGetAndSet('username')\n<div>hello {username}</div>\n<button onClick={()=> setUsername('my_username')}>set username</button>\n\n const [value, setValue] = useGetAndSet('a_lookup_key_in_the_store')",
         "lineNumber": 9
       }
     ],
@@ -1978,7 +1978,7 @@
     "augments": [],
     "examples": [
       {
-        "description": "import {useGetAndset} from 'react-context-hook'\nconst [username, setUsername] = useGetAndset('username')\n<div>hello {username}</div>\n<button onClick={()=> setUsername('my_username')}>set username</button>\n\n const [value, setValue] = useGetAndset('a_lookup_key_in_the_store')"
+        "description": "import {useGetAndSet} from 'react-context-hook'\nconst [username, setUsername] = useGetAndSet('username')\n<div>hello {username}</div>\n<button onClick={()=> setUsername('my_username')}>set username</button>\n\n const [value, setValue] = useGetAndSet('a_lookup_key_in_the_store')"
       }
     ],
     "implements": [],
@@ -2272,7 +2272,7 @@
     "throws": [],
     "todos": [],
     "yields": [],
-    "name": "useGetAndset",
+    "name": "useGetAndSet",
     "kind": "function",
     "members": {
       "global": [],
@@ -2283,11 +2283,11 @@
     },
     "path": [
       {
-        "name": "useGetAndset",
+        "name": "useGetAndSet",
         "kind": "function"
       }
     ],
-    "namespace": "useGetAndset"
+    "namespace": "useGetAndSet"
   },
   {
     "description": {

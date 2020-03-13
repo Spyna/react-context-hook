@@ -5,7 +5,7 @@ import {
   useStoreValue,
   useSetStoreValue,
   useDeleteStoreValue,
-  useGetAndset,
+  useGetAndSet,
   useGetAndDelete,
   useSetAndDelete
 } from './useStore'
@@ -18,7 +18,7 @@ export {
   useStoreValue,
   useSetStoreValue,
   useDeleteStoreValue,
-  useGetAndset,
+  useGetAndSet,
   useGetAndDelete,
   useSetAndDelete
 }

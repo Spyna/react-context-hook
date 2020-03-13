@@ -51,7 +51,7 @@ However for convenience, in React Components you can use the hooks exported from
 ### useStoreState - [docs](./DOCS.md#usestorestate)
 ### useSetStoreValue - [docs](./DOCS.md#usesetstorevalue)
 ### useDeleteStoreValue - [docs](./DOCS.md#usedeletestorevalue)
-### useGetAndset - [docs](./DOCS.md#usegetandset)
+### useGetAndSet - [docs](./DOCS.md#useGetAndSet)
 ### useGetAndDelete - [docs](./DOCS.md#usegetanddelete)
 ### useSetAndDelete - [docs](./DOCS.md#usesetanddelete)
 ### useStoreValue - [docs](./DOCS.md#usestorevalue)

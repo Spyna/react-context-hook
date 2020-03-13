@@ -13,7 +13,7 @@
 -   [useDeleteStoreValue][9]
     -   [Parameters][10]
     -   [Examples][11]
--   [useGetAndset][12]
+-   [useGetAndSet][12]
     -   [Parameters][13]
     -   [Examples][14]
 -   [useGetAndDelete][15]
@@ -29,6 +29,8 @@
     -   [Examples][25]
 
 ## useStore
+
+`useStore` is a React Hook that access a value stored in the application global store. It returns the value, a function to update it (like React.useState) and a function to delete it.
 
 ### Parameters
 
@@ -100,24 +102,25 @@ const deleteUsername = useDeleteStoreValue('username')
 
 Returns **[Function][30]** a function to delete a variable in the store with the given name. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`
 
-## useGetAndset
+## useGetAndSet
 
 This React hook returns an array to read and modify a value in the store:
-`const [value, setValue] = useGetAndset('a_lookup_key_in_the_store')`. The name of the variable in the arry is arbitrary and you can choose any string you like.
+`const [value, setValue] = useGetAndSet('a_lookup_key_in_the_store')`. The name of the variable in the arry is arbitrary and you can choose any string you like.
 
 ### Parameters
 
 -   `key` **[string][26]** The lookup key to find the saved value in the store
+-   `defaultValue` **any** The default value if missing
 
 ### Examples
 
 ```javascript
-import {useGetAndset} from 'react-context-hook'
-const [username, setUsername] = useGetAndset('username')
+import {useGetAndSet} from 'react-context-hook'
+const [username, setUsername] = useGetAndSet('username')
 <div>hello {username}</div>
 <button onClick={()=> setUsername('my_username')}>set username</button>
 
- const [value, setValue] = useGetAndset('a_lookup_key_in_the_store')
+ const [value, setValue] = useGetAndSet('a_lookup_key_in_the_store')
 ```
 
 Returns **[array][28]** an array with length 2:<br>
@@ -224,7 +227,7 @@ export default withStore(App, initialState, storeConfig)
 
 [11]: #examples-3
 
-[12]: #usegetandset
+[12]: #useGetAndSet
 
 [13]: #parameters-3
 

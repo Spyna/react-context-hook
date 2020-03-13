@@ -6,6 +6,7 @@ function getStore() {
 }
 
 /**
+ * `useStore` is a React Hook that access a value stored in the application global store. It returns the value, a function to update it (like React.useState) and a function to delete it.
  *
  * @param {string} key - The lookup key to find the saved value in the store
  * @param {any} defaultValue - The value if the value in the store is missing
@@ -82,7 +83,7 @@ function useDeleteStoreValue(key) {
 
 /**
  *This React hook returns an array to read and modify a value in the store:
- * `const [value, setValue] = useGetAndset('a_lookup_key_in_the_store')`. The name of the variable in the arry is arbitrary and you can choose any string you like.
+ * `const [value, setValue] = useGetAndSet('a_lookup_key_in_the_store')`. The name of the variable in the arry is arbitrary and you can choose any string you like.
  * @param {string} key - The lookup key to find the saved value in the store
  * @param {any} defaultValue - The default value if missing
  * @returns {array} an array with length 2:<br>
@@ -90,13 +91,20 @@ function useDeleteStoreValue(key) {
  * position 1 - a function *setValue* to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
  *
  * @example
- * import {useGetAndset} from 'react-context-hook'
- * const [username, setUsername] = useGetAndset('username')
+ * import {useGetAndSet} from 'react-context-hook'
+ * const [username, setUsername] = useGetAndSet('username')
  * <div>hello {username}</div>
  * <button onClick={()=> setUsername('my_username')}>set username</button>
  *
- *  const [value, setValue] = useGetAndset('a_lookup_key_in_the_store')
+ *  const [value, setValue] = useGetAndSet('a_lookup_key_in_the_store')
  *
+ */
+function useGetAndSet(key, defaultValue) {
+  return [useStoreValue(key, defaultValue), useSetStoreValue(key)]
+}
+
+/**
+ * @deprecated since version 1.2.1. You should use useGetAndSet (with the "S") hook because this hook will be removed it the next minor release. 
  */
 function useGetAndset(key, defaultValue) {
   return [useStoreValue(key, defaultValue), useSetStoreValue(key)]
@@ -159,6 +167,7 @@ export {
   useStoreValue,
   useSetStoreValue,
   useDeleteStoreValue,
+  useGetAndSet,
   useGetAndset,
   useGetAndDelete,
   useSetAndDelete

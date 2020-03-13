@@ -7,7 +7,7 @@ import {
   useStoreState,
   useSetAndDelete,
   useStoreValue,
-  useGetAndset,
+  useGetAndSet,
   useGetAndDelete,
   useSetStoreValue
 } from './useStore'
@@ -174,9 +174,9 @@ describe('Use Store test', () => {
     expect(document.querySelector('#content').textContent).toBe('')
   })
 
-  it('should use the useGetAndset hook', () => {
+  it('should use the useGetAndSet hook', () => {
     function App() {
-      const [value, setValue] = useGetAndset('username')
+      const [value, setValue] = useGetAndSet('username')
       useEffect(() => {
         setValue('test-value')
       }, [])
