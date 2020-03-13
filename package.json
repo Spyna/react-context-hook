@@ -1,6 +1,6 @@
 {
   "name": "react-context-hook",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A React.js global state manager with Hooks and Context API",
   "author": "Spyna (https://github.com/Spyna)",
   "keyword": [
@@ -27,7 +27,7 @@
   "scripts": {
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "build": "rollup -c && yarn docs:buildmd",
+    "build": "yarn prettier && rollup -c && yarn docs:buildmd",
     "start": "rollup -c -w",
     "prepare": "yarn run build",
     "predeploy": "yarn docs:build && cd example && yarn install && yarn run build && cd .. && cp -r docs example/build",
