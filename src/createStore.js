@@ -6,7 +6,7 @@ export default function createStore(config = defaultConfig, state, setState) {
   const userConfig = Object.freeze({ ...defaultConfig, ...config })
   const { listener, proxyStore, logging } = userConfig
   function updateState(storage) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       const newState = { ...state, ...storage }
       setState(newState)
       resolve(storage)
@@ -32,7 +32,7 @@ export default function createStore(config = defaultConfig, state, setState) {
       state[key] = value
       return updateState(state)
     },
-    remove: key => {
+    remove: (key) => {
       if (logging) {
         devTools.push({ ...state }, 'remove', key)
       }

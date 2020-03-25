@@ -23,7 +23,7 @@ let rawStore
  *export default withStore(App, initialState, storeConfig)
  */
 const withStore = (WrappedComponent, initialValue, config) => {
-  return function(props) {
+  return function (props) {
     const [state, setState] = useState({ ...initialValue })
     const store = createStore(config, state, setState)
     rawStore = store

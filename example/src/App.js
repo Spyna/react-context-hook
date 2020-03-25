@@ -47,7 +47,7 @@ function App() {
 const initialState = { count: 10 }
 
 const storeConfig = {
-  listener: state => {
+  listener: (state) => {
     console.log('state changed', state)
   },
   logging: true //process.env.NODE_ENV !== 'production'

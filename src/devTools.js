@@ -4,7 +4,7 @@ export default {
   push: (state, action, key, value) => {
     stack.push({ action, state, key, value })
   },
-  log: state => {
+  log: (state) => {
     const { action, state: prevState, key, value } = stack[stack.length - 1]
     console.group(`%c react-context-hook`, 'font-weight: bold')
     console.info(

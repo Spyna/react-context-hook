@@ -1,4 +1,4 @@
-const warnUser = prop => {
+const warnUser = (prop) => {
   console.group('%c react-context-hook ', 'background: #fcc; color: #333')
   console.error(`Sorry, you can't modify the [${prop}] property this way.`)
   console.groupEnd()

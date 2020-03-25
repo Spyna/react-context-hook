@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSetAndDelete } from 'react-context-hook'
 
-export default function() {
+export default function () {
   const [setValue, deleteValue] = useSetAndDelete('a-sample-key')
   return (
     <section>

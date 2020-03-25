@@ -6,7 +6,7 @@ describe('Create Store internal test', () => {
   beforeEach(() => {
     // setup a DOM element as a render target
     state = { test: 'test value' }
-    setState = newState => {
+    setState = (newState) => {
       state = newState
     }
   })
@@ -95,7 +95,7 @@ describe('Proxy Store test', () => {
   beforeEach(() => {
     // setup a DOM element as a render target
     state = { test: 'test value' }
-    setState = newState => {
+    setState = (newState) => {
       state = newState
     }
   })

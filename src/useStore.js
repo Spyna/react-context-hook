@@ -63,7 +63,7 @@ function useStoreState() {
  */
 function useSetStoreValue(key) {
   const store = getStore()
-  return value => store.set(key, value)
+  return (value) => store.set(key, value)
 }
 
 /**
@@ -104,7 +104,7 @@ function useGetAndSet(key, defaultValue) {
 }
 
 /**
- * @deprecated since version 1.2.1. You should use useGetAndSet (with the "S") hook because this hook will be removed it the next minor release. 
+ * @deprecated since version 1.2.1. You should use useGetAndSet (with the "S") hook because this hook will be removed it the next minor release.
  */
 function useGetAndset(key, defaultValue) {
   return [useStoreValue(key, defaultValue), useSetStoreValue(key)]
