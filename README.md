@@ -20,7 +20,48 @@ Read the documentation of `react-context-hook`:
 
 ## Usage
 
-Wrap your React App in the store Provider using the function `withStore`. 
+First, wrap your React App in the *Store Provider* using the function `withStore`. 
+
+```JS
+import { withStore} from 'react-context-hook'
+
+export default withStore(App)
+```
+
+Next use the hook in your Components
+
+```JS
+import { useStore } from 'react-context-hook'
+
+// const [count, setCount, deleteCount] = useStore('count', 0)
+
+export default function () {
+  const [count, setCount, deleteCount] = useStore('count', 0)
+  return (
+    <>
+      <button onClick={() => setCount(count - 1)}>Decrement - </button>
+      <span className="count">{count}</span>
+      <button onClick={() => setCount(count + 1)}>Increment + </button>
+      <button onClick={() => deleteCount()}>Delete "count" from store</button>
+    </>
+  )
+}
+```
+
+### More hooks: 
+
+
+ * withStore - [docs](./DOCS.md#withStore)
+ *  useStore - [docs](./DOCS.md#usestore)
+ * useStoreState - [docs](./DOCS.md#usestorestate)
+ * useSetStoreValue - [docs](./DOCS.md#usesetstorevalue)
+ * useDeleteStoreValue - [docs](./DOCS.md#usedeletestorevalue)
+ * GetAndSet - [docs](./DOCS.md#useGetAndSet)
+ * GetAndDelete - [docs](./DOCS.md#usegetanddelete)
+ * SetAndDelete - [docs](./DOCS.md#usesetanddelete)
+ * StoreValue - [docs](./DOCS.md#usestorevalue)
+
+### Advanced use of withStore
 
 ```JS
 import { withStore} from 'react-context-hook'
@@ -43,18 +84,6 @@ For example `store.set('username',  {name: 'spyna', email: 'me@spyna.it'})` will
 
 The store is exported as `store` from *react-context-hook*, so you can use it in the Components. 
 However for convenience, in React Components you can use the hooks exported from *react-context-hook*. 
-
-## Hooks
-
-### withStore - [doc](./DOCS.md#withStore)
-### useStore - [docs](./DOCS.md#usestore)
-### useStoreState - [docs](./DOCS.md#usestorestate)
-### useSetStoreValue - [docs](./DOCS.md#usesetstorevalue)
-### useDeleteStoreValue - [docs](./DOCS.md#usedeletestorevalue)
-### useGetAndSet - [docs](./DOCS.md#useGetAndSet)
-### useGetAndDelete - [docs](./DOCS.md#usegetanddelete)
-### useSetAndDelete - [docs](./DOCS.md#usesetanddelete)
-### useStoreValue - [docs](./DOCS.md#usestorevalue)
 
 
 ## License
