@@ -1,43 +1,24 @@
 import React from 'react'
 import { withStore, useStoreState } from 'react-context-hook'
 import Header from './layout/Header'
-import SetAmount from './SetAmount'
-import SetString from './SetString'
-import nonComponent from './nonComponent'
+import SetAmount from './SetAmountExample'
+import SetUsername from './SetUsername'
+import nonComponent from './nonComponentExample'
 import './App.css'
-import SetObject from './SetObject'
+import SetObjectExample from './SetObjectExample'
 import UseStoreExample from './UseStoreExample'
 import UseSetAndDeleteExample from './UseSetAndDeleteExample'
+import Description from './Description'
 
 function App() {
-  const globalState = useStoreState()
   return (
     <div className="App">
-      <Header
-        title="React context Hook"
-        subtitle="A 1.2kB library to manage the global state with the Context API and React hooks"
-      />
-      <section>
-        <h3>
-          This is a React App that has a global state. This is the global{' '}
-          <em>store</em> value.
-        </h3>
-        <pre>
-          <code>{JSON.stringify(globalState, null, ' ')}</code>
-        </pre>
-        <h4>
-          You can change the global state from different components, using the
-          buttons you find in this page
-        </h4>
-        <p>
-          Uh, you can event
-          <button onClick={() => nonComponent()}>Modify the store</button> from
-          a <em>NON Component</em> Object or function.
-        </p>
-      </section>
+      <Header/>
+      <Description />
+      
       <SetAmount />
-      <SetString />
-      <SetObject />
+      <SetUsername />
+      <SetObjectExample />
       <UseStoreExample />
       <UseSetAndDeleteExample />
     </div>

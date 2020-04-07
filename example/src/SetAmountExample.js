@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStore } from 'react-context-hook'
 
-export default function () {
+export default function SetAmountExample() {
   const [count, setCount, deleteCount] = useStore('count', 0)
   return (
     <section>

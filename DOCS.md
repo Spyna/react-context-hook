@@ -16,17 +16,19 @@
 -   [useGetAndSet][12]
     -   [Parameters][13]
     -   [Examples][14]
--   [useGetAndDelete][15]
+-   [useGetAndset][15]
     -   [Parameters][16]
-    -   [Examples][17]
--   [useSetAndDelete][18]
-    -   [Parameters][19]
-    -   [Examples][20]
--   [useStoreValue][21]
-    -   [Parameters][22]
--   [withStore][23]
+-   [useGetAndDelete][17]
+    -   [Parameters][18]
+    -   [Examples][19]
+-   [useSetAndDelete][20]
+    -   [Parameters][21]
+    -   [Examples][22]
+-   [useStoreValue][23]
     -   [Parameters][24]
-    -   [Examples][25]
+-   [withStore][25]
+    -   [Parameters][26]
+    -   [Examples][27]
 
 ## useStore
 
@@ -34,9 +36,9 @@
 
 ### Parameters
 
--   `key` **[string][26]** The lookup key to find the saved value in the store
+-   `key` **[string][28]** The lookup key to find the saved value in the store
 -   `defaultValue` **any** The value if the value in the store is missing
--   `createIfMissing` **[boolean][27]** if true and the data is missing it will be created in the store
+-   `createIfMissing` **[boolean][29]** if true and the data is missing it will be created in the store
 
 ### Examples
 
@@ -47,7 +49,7 @@ const [username, setUsername, deleteUsername] = useStore('username')
 <button onClick={()=> setUsername('my_username')}>set username</button>
 ```
 
-Returns **[array][28]** an array with length 3:<br>
+Returns **[array][30]** an array with length 3:<br>
 position 0 - the value of the data in the store.<br>
 position 1 - a function _setValue_ to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
 position 2 - a function _deleteValue_ to delete the value from the store. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`
@@ -64,7 +66,7 @@ const store = useStoreState()
 console.log('the store is', JSON.stringify(store))
 ```
 
-Returns **[object][29]** An object representing the whole store value in read only mode.
+Returns **[object][31]** An object representing the whole store value in read only mode.
 
 ## useSetStoreValue
 
@@ -72,7 +74,7 @@ Returns a function to set or update a variable in the store. You want to use thi
 
 ### Parameters
 
--   `key` **[string][26]** the name of the variable to set in the store
+-   `key` **[string][28]** the name of the variable to set in the store
 
 ### Examples
 
@@ -82,7 +84,7 @@ const setUsername = useSetStoreValue('username')
 <button onClick={()=> setUsername('my_username')}>set username</button>
 ```
 
-Returns **[Function][30]** a function to set a variable in the store with the given name When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`
+Returns **[Function][32]** a function to set a variable in the store with the given name When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`
 
 ## useDeleteStoreValue
 
@@ -90,7 +92,7 @@ Returns a function to delete a variable in the store. You want to use this hook 
 
 ### Parameters
 
--   `key` **[string][26]** the name of the variable to set in the store
+-   `key` **[string][28]** the name of the variable to set in the store
 
 ### Examples
 
@@ -100,7 +102,7 @@ const deleteUsername = useDeleteStoreValue('username')
 <button onClick={()=> deleteUsername('my_username')}>set username</button>
 ```
 
-Returns **[Function][30]** a function to delete a variable in the store with the given name. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`
+Returns **[Function][32]** a function to delete a variable in the store with the given name. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`
 
 ## useGetAndSet
 
@@ -109,7 +111,7 @@ This React hook returns an array to read and modify a value in the store:
 
 ### Parameters
 
--   `key` **[string][26]** The lookup key to find the saved value in the store
+-   `key` **[string][28]** The lookup key to find the saved value in the store
 -   `defaultValue` **any** The default value if missing
 
 ### Examples
@@ -123,9 +125,21 @@ const [username, setUsername] = useGetAndSet('username')
  const [value, setValue] = useGetAndSet('a_lookup_key_in_the_store')
 ```
 
-Returns **[array][28]** an array with length 2:<br>
+Returns **[array][30]** an array with length 2:<br>
 position 0 - the value of the data in the store.<br>
 position 1 - a function _setValue_ to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
+
+## useGetAndset
+
+### Parameters
+
+-   `key`  
+-   `defaultValue`  
+
+**Meta**
+
+-   **deprecated**: since version 1.2.1. You should use useGetAndSet (with the "S") hook because this hook will be removed it the next minor release.
+
 
 ## useGetAndDelete
 
@@ -134,7 +148,7 @@ This React hook returns an array to read and delete a value in the store:
 
 ### Parameters
 
--   `key` **[string][26]** The lookup key to find the saved value in the store
+-   `key` **[string][28]** The lookup key to find the saved value in the store
 
 ### Examples
 
@@ -145,7 +159,7 @@ const [username, deleteUsername] = useGetAndDelete('username')
 <button onClick={()=> deleteUsername('my_username')}>set username</button>
 ```
 
-Returns **[array][28]** an array with length 2:<br>
+Returns **[array][30]** an array with length 2:<br>
 position 0 - the value of the data in the store.<br>
 position 1 - a function _deleteValue_ to delete the data in the store. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`<br>
 
@@ -156,7 +170,7 @@ This React hook returns an array to set and delete a value in the store:
 
 ### Parameters
 
--   `key` **[string][26]** The lookup key to find the saved value in the store
+-   `key` **[string][28]** The lookup key to find the saved value in the store
 
 ### Examples
 
@@ -167,7 +181,7 @@ const [username, deleteUsername] = useGetAndDelete('username')
 <button onClick={()=> deleteUsername('my_username')}>set username</button>
 ```
 
-Returns **[array][28]** an array with length 2:<br>
+Returns **[array][30]** an array with length 2:<br>
 position 0 - a function _setValue_ to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
 position 1 - a function _deleteValue_ to delete the data in the store. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`<br>
 
@@ -175,7 +189,7 @@ position 1 - a function _deleteValue_ to delete the data in the store. When used
 
 ### Parameters
 
--   `key` **[string][26]** the name of the variable / value to be retrieved in the global store.
+-   `key` **[string][28]** the name of the variable / value to be retrieved in the global store.
 -   `defaultValue` **any?** an optional default value, if the value in the global store is not present.
 
 Returns **any** the value on the global store, or the default value if passed, or `undefined`
@@ -185,10 +199,10 @@ Returns **any** the value on the global store, or the default value if passed, o
 ### Parameters
 
 -   `WrappedComponent` **ReactElement** the component to connect with the store
--   `initialValue` **[Object][29]** the initial store value or nothing
--   `config` **[Object][29]** the custom configuration. If nothing is passed will use the default config
-    -   `config.listener` **[Function][30]** a function that is triggered each time the store is modified.
-    -   `config.proxyStore` **[boolean][27]** default `true` - if true the store will be protected by a Proxy. Set to false if your environment does not support Proxy. If you use `react-context-hook` in the browser set it to true
+-   `initialValue` **[Object][31]** the initial store value or nothing
+-   `config` **[Object][31]** the custom configuration. If nothing is passed will use the default config
+    -   `config.listener` **[Function][32]** a function that is triggered each time the store is modified.
+    -   `config.proxyStore` **[boolean][29]** default `true` - if true the store will be protected by a Proxy. Set to false if your environment does not support Proxy. If you use `react-context-hook` in the browser set it to true
 
 ### Examples
 
@@ -227,40 +241,44 @@ export default withStore(App, initialState, storeConfig)
 
 [11]: #examples-3
 
-[12]: #useGetAndSet
+[12]: #usegetandset
 
 [13]: #parameters-3
 
 [14]: #examples-4
 
-[15]: #usegetanddelete
+[15]: #usegetandset-1
 
 [16]: #parameters-4
 
-[17]: #examples-5
+[17]: #usegetanddelete
 
-[18]: #usesetanddelete
+[18]: #parameters-5
 
-[19]: #parameters-5
+[19]: #examples-5
 
-[20]: #examples-6
+[20]: #usesetanddelete
 
-[21]: #usestorevalue
+[21]: #parameters-6
 
-[22]: #parameters-6
+[22]: #examples-6
 
-[23]: #withstore
+[23]: #usestorevalue
 
 [24]: #parameters-7
 
-[25]: #examples-7
+[25]: #withstore
 
-[26]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[26]: #parameters-8
 
-[27]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[27]: #examples-7
 
-[28]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[28]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[29]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[29]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 
-[30]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[30]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[31]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[32]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function

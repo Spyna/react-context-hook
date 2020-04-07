@@ -1,6 +1,6 @@
 import { store } from 'react-context-hook'
 
-export default function () {
+export default function nonComponentExample() {
   store.set('count', 25).then(() => {
     console.log(`I modified the store, and I'm not a React component`)
   })

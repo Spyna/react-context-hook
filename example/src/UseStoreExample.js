@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStore } from 'react-context-hook'
 
-export default function () {
+export default function UseStoreExample() {
   const [price, setPrice, deletePrice] = useStore('price')
   return (
     <section>

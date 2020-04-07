@@ -7,7 +7,7 @@ import {
 
 const storeKey = 'login.logged_user'
 
-export default function () {
+export default function SetObjectExample() {
   const defaultValue = {
     name: 'My name',
     surname: ' surname',
