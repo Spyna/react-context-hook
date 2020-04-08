@@ -186,8 +186,8 @@ Returns **[object][29]** An object representing the whole store value in read on
 -   `WrappedComponent` **ReactElement** the component to connect with the store
 -   `initialValue` **[Object][29]** the initial store value or nothing
 -   `config` **[Object][29]** the custom configuration. If nothing is passed will use the default config
-    -   `config.listener` **[Function][28]** a function that is triggered each time the store is modified.
-    -   `config.proxyStore` **[boolean][30]** default `true` - if true the store will be protected by a Proxy. Set to false if your environment does not support Proxy. If you use `react-context-hook` in the browser set it to true
+    -   `config.listener` **[Function][28]** a function that is triggered each time the global state is modified.
+    -   `config.logging` **[boolean][30]** default `false` - if true it will log changes to console
 
 ### Examples
 
@@ -198,7 +198,7 @@ const storeConfig = {
  listener: state => {
    console.log('state changed', state)
  },
- logging: true //process.env.NODE_ENV !== 'production'
+ logging: process.env.NODE_ENV !== 'production'
 }
 
 export default withStore(App, initialState, storeConfig)
