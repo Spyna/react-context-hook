@@ -16,6 +16,7 @@
   "repository": "Spyna/react-context-hook",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
+  "unpkg": "dist/react-context-hook.js",
   "jsnext:main": "dist/index.es.js",
   "files": [
     "dist"
@@ -27,9 +28,9 @@
   "scripts": {
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "build": "yarn prettier && rollup -c && yarn docs:buildmd",
+    "build": "rollup -c && yarn docs:buildmd",
     "start": "rollup -c -w",
-    "prepare": "yarn run build",
+    "prepare": "yarn prettier && yarn run build",
     "predeploy": "yarn docs:build && cd example && yarn install && yarn run build && cd .. && cp -r docs example/build",
     "deploy": "gh-pages -d example/build --message \"[skip ci] Updates\"",
     "release": "standard-version",

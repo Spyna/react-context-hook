@@ -8,6 +8,7 @@ import pkg from './package.json'
 
 export default {
   input: 'src/index.js',
+  external: ['redux', 'react'],
   output: [
     {
       file: pkg.main,
@@ -18,6 +19,17 @@ export default {
       file: pkg.module,
       format: 'es',
       sourcemap: true
+    },
+    {
+      file: pkg.unpkg,
+      name: 'ReactContextHook',
+      format: 'umd',
+      sourcemap: true,
+      globals: {
+        react: 'React',
+        redux: 'Redux',
+        'react-dom': 'ReactDOM'
+      }
     }
   ],
   plugins: [
