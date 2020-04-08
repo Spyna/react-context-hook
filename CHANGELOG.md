@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/Spyna/react-context-hook/compare/v1.2.1...v2.0.0) (2020-04-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* store-subscription model
+
+* store-subscription model ([2b67537](https://github.com/Spyna/react-context-hook/commit/2b6753728a9c45d1cac214b06803e19521861640))
+
 ### [1.2.1](https://github.com/Spyna/react-context-hook/compare/v1.2.0...v1.2.1) (2020-03-13)
 
 
