@@ -2,7 +2,8 @@
 
 > A React.js global state manager with Hooks and Context API
 
-[![NPM](https://img.shields.io/npm/v/react-context-hook.svg)](https://www.npmjs.com/package/react-context-hook) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-context-hook.svg)](https://www.npmjs.com/package/react-context-hook) 
+[![Bundlephobia](https://badgen.net/bundlephobia/minzip/react-context-hook)](https://bundlephobia.com/result?p=react-context-hook)
 
 ## Install
 
