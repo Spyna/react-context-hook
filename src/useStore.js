@@ -1,8 +1,66 @@
-import { useContext } from 'react'
+import { useContext, useReducer, useMemo, useRef, useEffect } from 'react'
 import StoreContext from './StoreContext'
+import Subscription from './redux/util/Subscription'
+import { setStoreValueAction, deleteStoreValueAction } from './redux/actions'
 
-function getStore() {
-  return useContext(StoreContext)
+function equalityFn(a, b) {
+  return a === b
+}
+
+function useSelector(stateSelector) {
+  const selectedState = useSelectorWithStoreAndSubscription(stateSelector)
+
+  return selectedState
+}
+
+function useSelectorWithStoreAndSubscription(stateSelectorFn) {
+  const [, forceRender] = useReducer((s) => s + 1, 0)
+  const { store } = useContext(StoreContext)
+  const latestStateSelectorFn = useRef()
+  const latestSelectedState = useRef()
+  function checkForUpdates() {
+    try {
+      const newSelectedState = latestStateSelectorFn.current(
+        store.getState().main
+      )
+
+      if (equalityFn(newSelectedState, latestSelectedState.current)) {
+        return
+      }
+
+      latestSelectedState.current = newSelectedState
+    } catch (err) {
+      // ignore all errors
+    }
+
+    forceRender({})
+  }
+  const subscription = useMemo(() => new Subscription(store, checkForUpdates), [
+    store,
+    checkForUpdates
+  ])
+
+  let resultValue
+
+  if (stateSelectorFn !== latestStateSelectorFn.current) {
+    resultValue = stateSelectorFn(store.getState().main)
+  } else {
+    resultValue = latestSelectedState.current
+  }
+
+  useEffect(() => {
+    latestStateSelectorFn.current = stateSelectorFn
+    latestSelectedState.current = resultValue
+  })
+
+  useEffect(() => {
+    subscription.subscribe()
+    checkForUpdates()
+
+    return () => subscription.unsubscribe()
+  }, [store, subscription])
+
+  return resultValue
 }
 
 /**
@@ -10,7 +68,6 @@ function getStore() {
  *
  * @param {string} key - The lookup key to find the saved value in the store
  * @param {any} defaultValue - The value if the value in the store is missing
- * @param {boolean} createIfMissing - if true and the data is missing it will be created in the store
  *
  * @returns {array} an array with length 3:<br>
  * position 0 - the value of the data in the store.<br>
@@ -24,31 +81,12 @@ function getStore() {
  * <button onClick={()=> setUsername('my_username')}>set username</button>
  *
  */
-function useStore(key, defaultValue, createIfMissing) {
-  const store = getStore()
-  const actualValue = store.get(key)
-  if (actualValue === undefined && createIfMissing) {
-    store.set(key, defaultValue)
-  }
-  const setValue = useSetStoreValue(key)
-  const deleteValue = useDeleteStoreValue(key)
-  const value = useStoreValue(key, defaultValue)
-
-  return [value, setValue, deleteValue]
-}
-
-/**
- * Returns the whole store value, with all the variables stored in it. Changes to this object will not change the store
- *
- * @returns {object} - An object representing the whole store value in read only mode.
- *
- * @example
- * import {useStoreState} from 'react-context-hook'
- * const store = useStoreState()
- * console.log('the store is', JSON.stringify(store))
- */
-function useStoreState() {
-  return getStore().getState()
+function useStore(key, defaultValue) {
+  return [
+    useStoreValue(key, defaultValue),
+    useSetStoreValue(key),
+    useDeleteStoreValue(key)
+  ]
 }
 
 /**
@@ -62,8 +100,10 @@ function useStoreState() {
  * <button onClick={()=> setUsername('my_username')}>set username</button>
  */
 function useSetStoreValue(key) {
-  const store = getStore()
-  return (value) => store.set(key, value)
+  const { store } = useContext(StoreContext)
+  return function (value) {
+    store.dispatch(setStoreValueAction(key, value))
+  }
 }
 
 /**
@@ -77,8 +117,10 @@ function useSetStoreValue(key) {
  * <button onClick={()=> deleteUsername('my_username')}>set username</button>
  */
 function useDeleteStoreValue(key) {
-  const store = getStore()
-  return () => store.remove(key)
+  const { store } = useContext(StoreContext)
+  return function (value) {
+    store.dispatch(deleteStoreValueAction(key, value))
+  }
 }
 
 /**
@@ -100,13 +142,6 @@ function useDeleteStoreValue(key) {
  *
  */
 function useGetAndSet(key, defaultValue) {
-  return [useStoreValue(key, defaultValue), useSetStoreValue(key)]
-}
-
-/**
- * @deprecated since version 1.2.1. You should use useGetAndSet (with the "S") hook because this hook will be removed it the next minor release.
- */
-function useGetAndset(key, defaultValue) {
   return [useStoreValue(key, defaultValue), useSetStoreValue(key)]
 }
 
@@ -158,7 +193,27 @@ function useSetAndDelete(key) {
  * @returns {any} the value on the global store, or the default value if passed, or `undefined`
  */
 function useStoreValue(key, defaultValue) {
-  return getStore().get(key, defaultValue)
+  function stateSelector(state) {
+    return state[key]
+  }
+  return useSelector(stateSelector) || defaultValue
+}
+
+/**
+ * Returns the whole store value, with all the variables stored in it. Changes to this object will not change the store
+ *
+ * @returns {object} - An object representing the whole store value in read only mode.
+ *
+ * @example
+ * import {useStoreState} from 'react-context-hook'
+ * const store = useStoreState()
+ * console.log('the store is', JSON.stringify(store))
+ */
+function useStoreState() {
+  function stateSelector(state) {
+    return state
+  }
+  return useSelector(stateSelector)
 }
 
 export {
@@ -168,7 +223,6 @@ export {
   useSetStoreValue,
   useDeleteStoreValue,
   useGetAndSet,
-  useGetAndset,
   useGetAndDelete,
   useSetAndDelete
 }

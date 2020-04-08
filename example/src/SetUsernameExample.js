@@ -1,8 +1,9 @@
 import React from 'react'
 import { useStore } from 'react-context-hook'
+import { useFlashWhenRender } from './utils/useFlash'
 
-export default function SetUsername() {
-  const [username, setUsername] = useStore('username', 'spyna', true)
+export default function SetUsernameExample() {
+  const [username, setUsername] = useStore('username', 'spyna', false)
   const [textValue, setTextValue] = React.useState(username)
   function onChange(event) {
     setTextValue(event.target.value)
@@ -14,7 +15,7 @@ export default function SetUsername() {
   }
 
   return (
-    <section>
+    <section ref={useFlashWhenRender()}>
       <h3>
         Set the value <em>"username"</em> in the store
       </h3>

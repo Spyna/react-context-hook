@@ -52,7 +52,7 @@ export default function () {
 
 
  * withStore - [docs](./DOCS.md#withStore)
- *  useStore - [docs](./DOCS.md#usestore)
+ * useStore - [docs](./DOCS.md#usestore)
  * useStoreState - [docs](./DOCS.md#usestorestate)
  * useSetStoreValue - [docs](./DOCS.md#usesetstorevalue)
  * useDeleteStoreValue - [docs](./DOCS.md#usedeletestorevalue)

@@ -1,10 +1,12 @@
 import React from 'react'
 import { useStore } from 'react-context-hook'
+import { useFlashWhenRender } from './utils/useFlash'
 
 export default function SetAmountExample() {
   const [count, setCount, deleteCount] = useStore('count', 0)
+
   return (
-    <section>
+    <section ref={useFlashWhenRender()}>
       <h3>
         Set the value <em>"count"</em> in the store
       </h3>

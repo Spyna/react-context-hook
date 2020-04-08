@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 import { act } from 'react-dom/test-utils'
-import { withStore } from './withStore'
+import { withStore } from '../withStore'
 
 function App() {
   return <div>hello</div>
@@ -9,13 +9,11 @@ function App() {
 
 describe('Create Store test', () => {
   beforeEach(() => {
-    // setup a DOM element as a render target
     container = document.createElement('div')
     document.body.appendChild(container)
   })
 
   afterEach(() => {
-    // cleanup on exiting
     unmountComponentAtNode(container)
     container.remove()
     container = null

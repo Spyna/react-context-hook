@@ -1,9 +1,8 @@
 import React from 'react'
-import { withStore, useStoreState } from 'react-context-hook'
+import { withStore } from 'react-context-hook'
 import Header from './layout/Header'
 import SetAmount from './SetAmountExample'
-import SetUsername from './SetUsername'
-import nonComponent from './nonComponentExample'
+import SetUsernameExample from './SetUsernameExample'
 import './App.css'
 import SetObjectExample from './SetObjectExample'
 import UseStoreExample from './UseStoreExample'
@@ -12,15 +11,16 @@ import Description from './Description'
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
-      <Description />
-      
-      <SetAmount />
-      <SetUsername />
-      <SetObjectExample />
-      <UseStoreExample />
-      <UseSetAndDeleteExample />
+    <div>
+      <Header />
+      <main className="App">
+        <Description />
+        <SetAmount />
+        <SetUsernameExample />
+        <SetObjectExample />
+        <UseStoreExample />
+        <UseSetAndDeleteExample />
+      </main>
     </div>
   )
 }

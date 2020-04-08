@@ -1,10 +1,11 @@
 import React from 'react'
 import { useStore } from 'react-context-hook'
+import { useFlashWhenRender } from './utils/useFlash'
 
 export default function UseStoreExample() {
   const [price, setPrice, deletePrice] = useStore('price')
   return (
-    <section>
+    <section ref={useFlashWhenRender()}>
       <h3>
         Set/Remove the key<code>price</code> with the value of{' '}
         <code>99.9 $</code>

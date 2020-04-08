@@ -1,4 +1,4 @@
-import { withStore, rawStore as store } from './withStore'
+import { withStore } from './withStore'
 import {
   useStore,
   useStoreState,
@@ -12,7 +12,6 @@ import {
 
 export {
   withStore,
-  store,
   useStore,
   useStoreState,
   useStoreValue,

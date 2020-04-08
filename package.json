@@ -113,5 +113,8 @@
         "statements": 90
       }
     }
+  },
+  "dependencies": {
+    "redux": "^4.0.5"
   }
 }

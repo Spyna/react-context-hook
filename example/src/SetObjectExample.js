@@ -4,6 +4,7 @@ import {
   useSetStoreValue,
   useDeleteStoreValue
 } from 'react-context-hook'
+import { useFlashWhenRender } from './utils/useFlash'
 
 const storeKey = 'login.logged_user'
 
@@ -21,7 +22,7 @@ export default function SetObjectExample() {
   const setObject = useSetStoreValue(storeKey)
   const deleteObject = useDeleteStoreValue(storeKey)
   return (
-    <section>
+    <section ref={useFlashWhenRender()}>
       <h3>
         Set/Remove this object in the store with the key <code>{storeKey}</code>
       </h3>

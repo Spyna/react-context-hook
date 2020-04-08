@@ -1,10 +1,11 @@
 import React from 'react'
 import { useSetAndDelete } from 'react-context-hook'
+import { useFlashWhenRender } from './utils/useFlash'
 
 export default function UseSetAndDeleteExample() {
   const [setValue, deleteValue] = useSetAndDelete('a-sample-key')
   return (
-    <section>
+    <section ref={useFlashWhenRender()}>
       <h3>
         Set/Remove the key<code>'a-sample-key'</code> with the value{' '}
         <code>'the value'</code>

@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import StoreContext from './StoreContext'
-import createStore from './createStore'
-
-let rawStore
+import createStore from './redux/store'
+import defaultConfig from './defaultConfig'
 
 /**
  * @param {ReactElement} WrappedComponent the component to connect with the store
@@ -23,16 +22,15 @@ let rawStore
  *export default withStore(App, initialState, storeConfig)
  */
 const withStore = (WrappedComponent, initialValue, config) => {
+  const userConfig = Object.freeze({ ...defaultConfig, ...config })
+  const store = createStore(initialValue, userConfig)
   return function (props) {
-    const [state, setState] = useState({ ...initialValue })
-    const store = createStore(config, state, setState)
-    rawStore = store
     return (
-      <StoreContext.Provider value={store}>
+      <StoreContext.Provider value={{ store }}>
         <WrappedComponent {...props} />
       </StoreContext.Provider>
     )
   }
 }
 
-export { withStore, rawStore }
+export { withStore }

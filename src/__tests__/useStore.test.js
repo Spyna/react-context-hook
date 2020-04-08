@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 import { act } from 'react-dom/test-utils'
-import { withStore } from './withStore'
+import { withStore } from '../withStore'
 import {
   useStore,
   useStoreState,
@@ -10,7 +10,7 @@ import {
   useGetAndSet,
   useGetAndDelete,
   useSetStoreValue
-} from './useStore'
+} from '../useStore'
 
 describe('Use Store test', () => {
   beforeEach(() => {
@@ -42,19 +42,6 @@ describe('Use Store test', () => {
     expect(container.textContent).toBe('')
   })
 
-  it('should create the value when the createIfMissing option is used ', () => {
-    function App() {
-      const [value] = useStore('username', 'test', true)
-      return <div>{value}</div>
-    }
-    WithStore = withStore(App)
-
-    act(() => {
-      render(<WithStore />, container)
-    })
-    expect(container.textContent).toBe('test')
-  })
-
   it('should set a value in the store', () => {
     function App() {
       const [value, setValue] = useStore('username')
@@ -67,7 +54,14 @@ describe('Use Store test', () => {
         </div>
       )
     }
-    WithStore = withStore(App)
+    WithStore = withStore(
+      App,
+      {},
+      {
+        logging: true,
+        listener: () => {}
+      }
+    )
 
     act(() => {
       render(<WithStore />, container)
