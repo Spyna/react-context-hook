@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8'>
-  <title>react-context-hook 1.2.0 | Documentation</title>
+  <title>react-context-hook 1.2.1 | Documentation</title>
   <meta name='description' content='A React.js global state manager with Hooks and Context API'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet'>
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>react-context-hook</h3>
-          <div class='mb1'><code>1.2.0</code></div>
+          <div class='mb1'><code>1.2.1</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -29,16 +29,6 @@
                   href='#usestore'
                   class="">
                   useStore
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#usestorestate'
-                  class="">
-                  useStoreState
                   
                 </a>
                 
@@ -76,16 +66,6 @@
               
                 
                 <li><a
-                  href='#usegetandset'
-                  class="">
-                  useGetAndset
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
                   href='#usegetanddelete'
                   class="">
                   useGetAndDelete
@@ -109,6 +89,16 @@
                   href='#usestorevalue'
                   class="">
                   useStoreValue
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#usestorestate'
+                  class="">
+                  useStoreState
                   
                 </a>
                 
@@ -149,7 +139,7 @@
 
   <p><code>useStore</code> is a React Hook that access a value stored in the application global store. It returns the value, a function to update it (like React.useState) and a function to delete it.</p>
 
-    <div class='pre p1 fill-light mt0'>useStore(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, defaultValue: any, createIfMissing: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></div>
+    <div class='pre p1 fill-light mt0'>useStore(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, defaultValue: any): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></div>
   
   
 
@@ -177,15 +167,6 @@
           <div>
             <span class='code bold'>defaultValue</span> <code class='quiet'>(any)</code>
 	    The value if the value in the store is missing
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>createIfMissing</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>)</code>
-	    if true and the data is missing it will be created in the store
 
           </div>
           
@@ -231,70 +212,6 @@ position 2 - a function
 const [username, setUsername, deleteUsername] = useStore('username')
 &lt;div&gt;hello {username}&lt;/div&gt;
 &lt;button onClick={()=&gt; setUsername('my_username')}&gt;set username&lt;/button&gt;</pre>
-    
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='usestorestate'>
-      useStoreState
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Returns the whole store value, with all the variables stored in it. Changes to this object will not change the store</p>
-
-    <div class='pre p1 fill-light mt0'>useStoreState(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
-        An object representing the whole store value in read only mode.
-
-      
-    
-  
-
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Example</div>
-    
-      
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> {useStoreState} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-context-hook'</span>
-<span class="hljs-keyword">const</span> store = useStoreState()
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'the store is'</span>, <span class="hljs-built_in">JSON</span>.stringify(store))</pre>
     
   
 
@@ -574,75 +491,6 @@ const [username, setUsername] = useGetAndSet('username')
   
   <div class='clearfix'>
     
-    <h3 class='fl m0' id='usegetandset'>
-      useGetAndset
-    </h3>
-    
-    
-  </div>
-  
-
-  
-    <div class='pre p1 fill-light mt0'>useGetAndset(key: any, defaultValue: any)</div>
-  
-  
-
-  <div>Deprecated: since version 1.2.1. You should use useGetAndSet (with the "S") hook because this hook will be removed it the next minor release.
-</div>
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>key</span> <code class='quiet'>(any)</code>
-	    
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>defaultValue</span> <code class='quiet'>(any)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
     <h3 class='fl m0' id='usegetanddelete'>
       useGetAndDelete
     </h3>
@@ -886,6 +734,70 @@ const [username, deleteUsername] = useGetAndDelete('username')
 
   
 
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='usestorestate'>
+      useStoreState
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Returns the whole store value, with all the variables stored in it. Changes to this object will not change the store</p>
+
+    <div class='pre p1 fill-light mt0'>useStoreState(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        An object representing the whole store value in read only mode.
+
+      
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> {useStoreState} <span class="hljs-keyword">from</span> <span class="hljs-string">'react-context-hook'</span>
+<span class="hljs-keyword">const</span> store = useStoreState()
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'the store is'</span>, <span class="hljs-built_in">JSON</span>.stringify(store))</pre>
+    
   
 
   
