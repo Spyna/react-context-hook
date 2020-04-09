@@ -23,6 +23,7 @@ export default function SetUsernameExample() {
         <input
           onChange={onChange}
           value={textValue}
+          name="username"
           placeholder="type your username"
         />
         <button>Change value in store</button>
