@@ -29,9 +29,11 @@ const initialState = { count: 10 }
 
 const storeConfig = {
   listener: (state) => {
-    console.log('state changed', state)
+    if (process.env.NODE_ENV !== 'test') {
+      console.log('state changed', state)
+    }
   },
-  logging: true //process.env.NODE_ENV !== 'production'
+  logging: process.env.NODE_ENV !== 'test'
 }
 
 export default withStore(App, initialState, storeConfig)

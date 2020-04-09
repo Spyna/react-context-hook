@@ -10,10 +10,10 @@ export default function UseSetAndDeleteExample() {
         Set/Remove the key<code>'a-sample-key'</code> with the value{' '}
         <code>'the value'</code>
       </h3>
-      <button onClick={() => setValue('the value')}>
+      <button id="set-a-value" onClick={() => setValue('the value')}>
         set 'a-sample-key' in store
       </button>
-      <button onClick={() => deleteValue()}>
+      <button id="delete-a-value" onClick={() => deleteValue()}>
         remove 'a-sample-key' from store
       </button>
     </section>

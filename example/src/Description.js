@@ -11,7 +11,7 @@ export default function Description() {
         global <em>state</em>.
       </h3>
       <pre>
-        <code>{JSON.stringify(globalState, null, ' ')}</code>
+        <code id="global-state">{JSON.stringify(globalState, null, ' ')}</code>
       </pre>
       <p>
         You can change the global state from different components, using the

@@ -26,7 +26,7 @@ export default function SetUsernameExample() {
           name="username"
           placeholder="type your username"
         />
-        <button>Change value in store</button>
+        <button id="set-username">Change value in store</button>
       </form>
     </section>
   )

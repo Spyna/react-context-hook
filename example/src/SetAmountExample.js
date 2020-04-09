@@ -10,10 +10,10 @@ export default function SetAmountExample() {
       <h3>
         Set the value <em>"count"</em> in the store
       </h3>
-      <button onClick={() => setCount(count - 1)}>Decrement - </button>
+      <button id="decrement" onClick={() => setCount(count - 1)}>Decrement - </button>
       <span className="count">{count}</span>
-      <button onClick={() => setCount(count + 1)}>Increment + </button>
-      <button onClick={() => deleteCount()}>Delete "count" from store</button>
+      <button id="increment" onClick={() => setCount(count + 1)}>Increment + </button>
+      <button id="delete-count" onClick={() => deleteCount()}>Delete "count" from store</button>
     </section>
   )
 }
