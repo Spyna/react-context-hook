@@ -7,9 +7,7 @@ export default function Header() {
         React context Hook <a href="docs">Documentation</a>{' '}
         <a href="https://github.com/Spyna/react-context-hook">GitHub</a>.
       </h1>
-      <h2>
-        A 3 KB library to manage the global state with React hooks.
-      </h2>
+      <h2>A 3 KB library to manage the global state with React hooks.</h2>
     </header>
   )
 }

@@ -120,7 +120,7 @@ it('sets and delete the key "a-sample-key" form the state', async () => {
     render(<App />, container)
   })
 
-  let expectedState = JSON.stringify({username: 'spyna'}, null, ' ')
+  let expectedState = JSON.stringify({ username: 'spyna' }, null, ' ')
   expect(container.querySelector('#global-state').textContent).toBe(
     expectedState
   )
@@ -129,7 +129,11 @@ it('sets and delete the key "a-sample-key" form the state', async () => {
   await act(async () => {
     await button.dispatchEvent(new MouseEvent('click', { bubbles: true }))
   })
-  expectedState = JSON.stringify({ username: 'spyna', 'a-sample-key': 'the value'}, null, ' ')
+  expectedState = JSON.stringify(
+    { username: 'spyna', 'a-sample-key': 'the value' },
+    null,
+    ' '
+  )
   expect(container.querySelector('#global-state').textContent).toBe(
     expectedState
   )
@@ -137,7 +141,7 @@ it('sets and delete the key "a-sample-key" form the state', async () => {
   await act(async () => {
     await button.dispatchEvent(new MouseEvent('click', { bubbles: true }))
   })
-  expectedState = JSON.stringify({ username: 'spyna'}, null, ' ')
+  expectedState = JSON.stringify({ username: 'spyna' }, null, ' ')
   expect(container.querySelector('#global-state').textContent).toBe(
     expectedState
   )
