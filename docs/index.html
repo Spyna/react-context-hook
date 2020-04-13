@@ -882,7 +882,15 @@ const [username, deleteUsername] = useGetAndDelete('username')
                 <tr>
   <td class='break-word'><span class='code bold'>config.listener</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a></code>
   </td>
-  <td class='break-word'><span>a function that is triggered each time the global state is modified.
+  <td class='break-word'><span>a function that is triggered each time the global state is modified. This function takes these parameters: (state, key, prevValue, nextValue). 
+<code>state</code>
+ is the value of the new state, 
+<code>key</code>
+ is the key that changed, 
+<code>prevValue</code>
+ is the old value of the key, 
+<code>nextValule</code>
+ is the new one.
 </span></td>
 </tr>
 
@@ -920,9 +928,12 @@ const [username, deleteUsername] = useGetAndDelete('username')
       <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> initialState = { <span class="hljs-attr">count</span>: <span class="hljs-number">10</span> }
 
 <span class="hljs-keyword">const</span> storeConfig = {
- <span class="hljs-attr">listener</span>: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> {
-   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'state changed'</span>, state)
- },
+ <span class="hljs-attr">listener</span>: <span class="hljs-function">(<span class="hljs-params">state, key, prevValue, nextValue</span>) =&gt;</span> {
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`the key "<span class="hljs-subst">${key}</span>" changed in the store`</span>)
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'the old value is'</span>, prevValue)
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'the current value is'</span>, nextValue)
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'the state is'</span>, state)
+},
  <span class="hljs-attr">logging</span>: process.env.NODE_ENV !== <span class="hljs-string">'production'</span>
 }
 
