@@ -186,7 +186,7 @@ Returns **[object][29]** An object representing the whole store value in read on
 -   `WrappedComponent` **ReactElement** the component to connect with the store
 -   `initialValue` **[Object][29]** the initial store value or nothing
 -   `config` **[Object][29]** the custom configuration. If nothing is passed will use the default config
-    -   `config.listener` **[Function][28]** a function that is triggered each time the global state is modified.
+    -   `config.listener` **[Function][28]** a function that is triggered each time the global state is modified. This function takes these parameters: (state, key, prevValue, nextValue). `state` is the value of the new state, `key` is the key that changed, `prevValue` is the old value of the key, `nextValule` is the new one.
     -   `config.logging` **[boolean][30]** default `false` - if true it will log changes to console
 
 ### Examples
@@ -195,9 +195,12 @@ Returns **[object][29]** An object representing the whole store value in read on
 const initialState = { count: 10 }
 
 const storeConfig = {
- listener: state => {
-   console.log('state changed', state)
- },
+ listener: (state, key, prevValue, nextValue) => {
+console.log(`the key "${key}" changed in the store`)
+console.log('the old value is', prevValue)
+console.log('the current value is', nextValue)
+console.log('the state is', state)
+},
  logging: process.env.NODE_ENV !== 'production'
 }
 

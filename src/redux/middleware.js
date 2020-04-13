@@ -26,7 +26,10 @@ export const logger = ({ getState }) => (next) => (action) => {
 export const listernerMiddleware = (listener) => ({ getState }) => (next) => (
   action
 ) => {
+  const { key } = action.payload
+  const prevValue = getState().main[key]
   const value = next(action)
-  listener(getState().main)
+  const nextValue = getState().main[key]
+  listener(getState().main, key, prevValue, nextValue)
   return value
 }

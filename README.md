@@ -70,8 +70,11 @@ import { withStore} from 'react-context-hook'
 const initialState = { count: 10 }
 
 const storeConfig = {
-  listener: state => {
-    console.log('state changed', state)
+  listener: (state, key, prevValue, nextValue) => {
+      console.log(`the key "${key}" changed in the store`)
+      console.log('the old value is', prevValue)
+      console.log('the current value is', nextValue)
+      console.log('the state is', state)
   },
   logging: true //process.env.NODE_ENV !== 'production'
 }

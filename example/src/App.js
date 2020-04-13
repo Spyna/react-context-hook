@@ -28,9 +28,12 @@ function App() {
 const initialState = { count: 10 }
 
 const storeConfig = {
-  listener: (state) => {
+  listener: (state, key, prevValue, nextValue) => {
     if (process.env.NODE_ENV !== 'test') {
-      console.log('state changed', state)
+      console.log(`the key "${key}" changed in the store`)
+      console.log('the old value is', prevValue)
+      console.log('the current value is', nextValue)
+      console.log('the state is', state)
     }
   },
   logging: process.env.NODE_ENV !== 'test'
