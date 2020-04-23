@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/Spyna/react-context-hook/compare/v2.1.0...v2.1.1) (2020-04-23)
+
+
+### Bug Fixes
+
+* preserve falsy value in initial state, closes [#13](https://github.com/Spyna/react-context-hook/issues/13) ([2cfb0aa](https://github.com/Spyna/react-context-hook/commit/2cfb0aa8e2e9430e37d0a69c588f4422f766bfe9))
+
 ## [2.1.0](https://github.com/Spyna/react-context-hook/compare/v2.0.1...v2.1.0) (2020-04-13)
 
 
