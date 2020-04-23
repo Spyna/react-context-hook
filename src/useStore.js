@@ -7,13 +7,7 @@ function equalityFn(a, b) {
   return a === b
 }
 
-function useSelector(stateSelector) {
-  const selectedState = useSelectorWithStoreAndSubscription(stateSelector)
-
-  return selectedState
-}
-
-function useSelectorWithStoreAndSubscription(stateSelectorFn) {
+function useSelector(stateSelectorFn) {
   const [, forceRender] = useReducer((s) => s + 1, 0)
   const { store } = useContext(StoreContext)
   const latestStateSelectorFn = useRef()
@@ -196,7 +190,8 @@ function useStoreValue(key, defaultValue) {
   function stateSelector(state) {
     return state[key]
   }
-  return useSelector(stateSelector) || defaultValue
+  const storeValue = useSelector(stateSelector)
+  return storeValue !== undefined ? storeValue : defaultValue
 }
 
 /**

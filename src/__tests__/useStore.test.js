@@ -201,4 +201,23 @@ describe('Use Store test', () => {
     })
     expect(container.textContent).toBe(JSON.stringify(state))
   })
+
+  it('should use the useStoreValue hook with falsy value 0, null, and false', () => {
+    function App() {
+      const falsyFalse = useStoreValue('falsyFalse')
+      expect(falsyFalse).toBe(false)
+      const falsyZero = useStoreValue('falsyZero')
+      expect(falsyZero).toBe(0)
+      const falsyNull = useStoreValue('falsyNull')
+      expect(falsyNull).toBe(null)
+      return null
+    }
+
+    const state = { falsyFalse: false, falsyZero: 0, falsyNull: null }
+    WithStore = withStore(App, state)
+
+    act(() => {
+      render(<WithStore />, container)
+    })
+  })
 })

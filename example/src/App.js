@@ -8,6 +8,7 @@ import SetObjectExample from './SetObjectExample'
 import UseStoreExample from './UseStoreExample'
 import UseSetAndDeleteExample from './UseSetAndDeleteExample'
 import Description from './Description'
+import UseStoreValueWithFalsyValues from './UseStoreValueWithFalsyValues'
 
 function App() {
   return (
@@ -20,12 +21,13 @@ function App() {
         <SetObjectExample />
         <UseStoreExample />
         <UseSetAndDeleteExample />
+        <UseStoreValueWithFalsyValues />
       </main>
     </div>
   )
 }
 
-const initialState = { count: 10 }
+const initialState = { count: 10, logIn: false, counter: 0, nullValue: null }
 
 const storeConfig = {
   listener: (state, key, prevValue, nextValue) => {
