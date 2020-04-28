@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/Spyna/react-context-hook/compare/v2.1.1...v2.2.0) (2020-04-28)
+
+
+### Features
+
+* use store outside of React  components. Closes [#14](https://github.com/Spyna/react-context-hook/issues/14) ([c918e4b](https://github.com/Spyna/react-context-hook/commit/c918e4b474e9733c794e35a86446a3bf561ec093))
+
 ### [2.1.1](https://github.com/Spyna/react-context-hook/compare/v2.1.0...v2.1.1) (2020-04-23)
 
 
