@@ -11,8 +11,8 @@ export const logger = ({ getState }) => (next) => (action) => {
     `%c ${'ACTION'} %c ${action.type}`,
     'background: yellow;font-weight: bold',
     'font-weight: bold;',
-    action.payload.key,
-    action.payload.value
+    action.payload.key || '',
+    action.payload.value || action.payload
   )
   console.info(
     `%c ${'NEXT STATE'} `,

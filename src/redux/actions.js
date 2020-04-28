@@ -1,4 +1,4 @@
-import { SET_VALUE, REMOVE_VALUE } from './actionTypes'
+import { SET_VALUE, REMOVE_VALUE, RESET } from './actionTypes'
 
 export const setStoreValueAction = (key, value) => ({
   type: SET_VALUE,
@@ -13,4 +13,9 @@ export const deleteStoreValueAction = (key) => ({
   payload: {
     key
   }
+})
+
+export const resetStoreWithValue = (state = {}) => ({
+  type: RESET,
+  payload: state
 })

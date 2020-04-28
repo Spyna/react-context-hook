@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { SET_VALUE, REMOVE_VALUE } from './actionTypes'
+import { SET_VALUE, REMOVE_VALUE, RESET } from './actionTypes'
 
 function mainReducer(state = {}, action) {
   switch (action.type) {
@@ -19,6 +19,9 @@ function mainReducer(state = {}, action) {
       }
       delete newState[key]
       return newState
+    }
+    case RESET: {
+      return action.payload
     }
     default:
       return state

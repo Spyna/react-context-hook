@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStore, useStoreValue } from 'react-context-hook'
+import { useStore } from 'react-context-hook'
 import { useFlashWhenRender } from './utils/useFlash'
 
 export default function SetAmountExample() {

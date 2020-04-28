@@ -2,31 +2,68 @@
 
 ### Table of Contents
 
--   [useStore][1]
+-   [reset][1]
     -   [Parameters][2]
-    -   [Examples][3]
--   [useSetStoreValue][4]
-    -   [Parameters][5]
-    -   [Examples][6]
--   [useDeleteStoreValue][7]
-    -   [Parameters][8]
-    -   [Examples][9]
--   [useGetAndSet][10]
-    -   [Parameters][11]
-    -   [Examples][12]
--   [useGetAndDelete][13]
-    -   [Parameters][14]
-    -   [Examples][15]
--   [useSetAndDelete][16]
-    -   [Parameters][17]
-    -   [Examples][18]
--   [useStoreValue][19]
-    -   [Parameters][20]
--   [useStoreState][21]
+-   [set][3]
+    -   [Parameters][4]
+-   [delete][5]
+    -   [Parameters][6]
+-   [getState][7]
+-   [useStore][8]
+    -   [Parameters][9]
+    -   [Examples][10]
+-   [useSetStoreValue][11]
+    -   [Parameters][12]
+    -   [Examples][13]
+-   [useDeleteStoreValue][14]
+    -   [Parameters][15]
+    -   [Examples][16]
+-   [useGetAndSet][17]
+    -   [Parameters][18]
+    -   [Examples][19]
+-   [useGetAndDelete][20]
+    -   [Parameters][21]
     -   [Examples][22]
--   [withStore][23]
+-   [useSetAndDelete][23]
     -   [Parameters][24]
     -   [Examples][25]
+-   [useStoreValue][26]
+    -   [Parameters][27]
+-   [useStoreState][28]
+    -   [Examples][29]
+-   [rawStore][30]
+-   [withStore][31]
+    -   [Parameters][32]
+    -   [Examples][33]
+
+## reset
+
+Resets the state to the given input.
+
+### Parameters
+
+-   `state` **[Object][34]** the new value to reset the state to.
+
+## set
+
+Sets the specified key in the store. This function is equivaluent to the `useSetStoreValue` hook.
+
+### Parameters
+
+-   `key` **[string][35]** the property to set in the store
+-   `value` **[Object][34]** the value of the property
+
+## delete
+
+delete the specified key from the store. This function is equivaluent to the `useDeleteStoreValue` hook.
+
+### Parameters
+
+-   `key` **[string][35]** the property to set in the store
+
+## getState
+
+Returns **any** the global state value of the store
 
 ## useStore
 
@@ -34,7 +71,7 @@
 
 ### Parameters
 
--   `key` **[string][26]** The lookup key to find the saved value in the store
+-   `key` **[string][35]** The lookup key to find the saved value in the store
 -   `defaultValue` **any** The value if the value in the store is missing
 
 ### Examples
@@ -46,7 +83,7 @@ const [username, setUsername, deleteUsername] = useStore('username')
 <button onClick={()=> setUsername('my_username')}>set username</button>
 ```
 
-Returns **[array][27]** an array with length 3:<br>
+Returns **[array][36]** an array with length 3:<br>
 position 0 - the value of the data in the store.<br>
 position 1 - a function _setValue_ to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
 position 2 - a function _deleteValue_ to delete the value from the store. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`
@@ -57,7 +94,7 @@ Returns a function to set or update a variable in the store. You want to use thi
 
 ### Parameters
 
--   `key` **[string][26]** the name of the variable to set in the store
+-   `key` **[string][35]** the name of the variable to set in the store
 
 ### Examples
 
@@ -67,7 +104,7 @@ const setUsername = useSetStoreValue('username')
 <button onClick={()=> setUsername('my_username')}>set username</button>
 ```
 
-Returns **[Function][28]** a function to set a variable in the store with the given name When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`
+Returns **[Function][37]** a function to set a variable in the store with the given name When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`
 
 ## useDeleteStoreValue
 
@@ -75,7 +112,7 @@ Returns a function to delete a variable in the store. You want to use this hook 
 
 ### Parameters
 
--   `key` **[string][26]** the name of the variable to set in the store
+-   `key` **[string][35]** the name of the variable to set in the store
 
 ### Examples
 
@@ -85,7 +122,7 @@ const deleteUsername = useDeleteStoreValue('username')
 <button onClick={()=> deleteUsername('my_username')}>set username</button>
 ```
 
-Returns **[Function][28]** a function to delete a variable in the store with the given name. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`
+Returns **[Function][37]** a function to delete a variable in the store with the given name. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`
 
 ## useGetAndSet
 
@@ -94,7 +131,7 @@ This React hook returns an array to read and modify a value in the store:
 
 ### Parameters
 
--   `key` **[string][26]** The lookup key to find the saved value in the store
+-   `key` **[string][35]** The lookup key to find the saved value in the store
 -   `defaultValue` **any** The default value if missing
 
 ### Examples
@@ -108,7 +145,7 @@ const [username, setUsername] = useGetAndSet('username')
  const [value, setValue] = useGetAndSet('a_lookup_key_in_the_store')
 ```
 
-Returns **[array][27]** an array with length 2:<br>
+Returns **[array][36]** an array with length 2:<br>
 position 0 - the value of the data in the store.<br>
 position 1 - a function _setValue_ to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
 
@@ -119,7 +156,7 @@ This React hook returns an array to read and delete a value in the store:
 
 ### Parameters
 
--   `key` **[string][26]** The lookup key to find the saved value in the store
+-   `key` **[string][35]** The lookup key to find the saved value in the store
 
 ### Examples
 
@@ -130,7 +167,7 @@ const [username, deleteUsername] = useGetAndDelete('username')
 <button onClick={()=> deleteUsername('my_username')}>set username</button>
 ```
 
-Returns **[array][27]** an array with length 2:<br>
+Returns **[array][36]** an array with length 2:<br>
 position 0 - the value of the data in the store.<br>
 position 1 - a function _deleteValue_ to delete the data in the store. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`<br>
 
@@ -141,7 +178,7 @@ This React hook returns an array to set and delete a value in the store:
 
 ### Parameters
 
--   `key` **[string][26]** The lookup key to find the saved value in the store
+-   `key` **[string][35]** The lookup key to find the saved value in the store
 
 ### Examples
 
@@ -152,7 +189,7 @@ const [username, deleteUsername] = useGetAndDelete('username')
 <button onClick={()=> deleteUsername('my_username')}>set username</button>
 ```
 
-Returns **[array][27]** an array with length 2:<br>
+Returns **[array][36]** an array with length 2:<br>
 position 0 - a function _setValue_ to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
 position 1 - a function _deleteValue_ to delete the data in the store. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`<br>
 
@@ -160,7 +197,7 @@ position 1 - a function _deleteValue_ to delete the data in the store. When used
 
 ### Parameters
 
--   `key` **[string][26]** the name of the variable / value to be retrieved in the global store.
+-   `key` **[string][35]** the name of the variable / value to be retrieved in the global store.
 -   `defaultValue` **any?** an optional default value, if the value in the global store is not present.
 
 Returns **any** the value on the global store, or the default value if passed, or `undefined`
@@ -177,17 +214,21 @@ const store = useStoreState()
 console.log('the store is', JSON.stringify(store))
 ```
 
-Returns **[object][29]** An object representing the whole store value in read only mode.
+Returns **[object][34]** An object representing the whole store value in read only mode.
+
+## rawStore
+
+This store can be used outside of React components.
 
 ## withStore
 
 ### Parameters
 
 -   `WrappedComponent` **ReactElement** the component to connect with the store
--   `initialValue` **[Object][29]** the initial store value or nothing
--   `config` **[Object][29]** the custom configuration. If nothing is passed will use the default config
-    -   `config.listener` **[Function][28]** a function that is triggered each time the global state is modified. This function takes these parameters: (state, key, prevValue, nextValue). `state` is the value of the new state, `key` is the key that changed, `prevValue` is the old value of the key, `nextValule` is the new one.
-    -   `config.logging` **[boolean][30]** default `false` - if true it will log changes to console
+-   `initialValue` **[Object][34]** an Object that will be the initial store value, or nothing
+-   `config` **[Object][34]** the custom configuration. If nothing is passed, the default config will be used.
+    -   `config.listener` **[Function][37]** a function that is triggered each time the global state is modified. This function takes these parameters: (state, key, prevValue, nextValue). `state` is the value of the new state, `key` is the key that changed, `prevValue` is the old value of the key, `nextValule` is the new one.
+    -   `config.logging` **[boolean][38]** default `false` - if true it will log changes to console
 
 ### Examples
 
@@ -207,62 +248,78 @@ console.log('the state is', state)
 export default withStore(App, initialState, storeConfig)
 ```
 
-[1]: #usestore
+[1]: #reset
 
 [2]: #parameters
 
-[3]: #examples
+[3]: #set
 
-[4]: #usesetstorevalue
+[4]: #parameters-1
 
-[5]: #parameters-1
+[5]: #delete
 
-[6]: #examples-1
+[6]: #parameters-2
 
-[7]: #usedeletestorevalue
+[7]: #getstate
 
-[8]: #parameters-2
+[8]: #usestore
 
-[9]: #examples-2
+[9]: #parameters-3
 
-[10]: #usegetandset
+[10]: #examples
 
-[11]: #parameters-3
+[11]: #usesetstorevalue
 
-[12]: #examples-3
+[12]: #parameters-4
 
-[13]: #usegetanddelete
+[13]: #examples-1
 
-[14]: #parameters-4
+[14]: #usedeletestorevalue
 
-[15]: #examples-4
+[15]: #parameters-5
 
-[16]: #usesetanddelete
+[16]: #examples-2
 
-[17]: #parameters-5
+[17]: #usegetandset
 
-[18]: #examples-5
+[18]: #parameters-6
 
-[19]: #usestorevalue
+[19]: #examples-3
 
-[20]: #parameters-6
+[20]: #usegetanddelete
 
-[21]: #usestorestate
+[21]: #parameters-7
 
-[22]: #examples-6
+[22]: #examples-4
 
-[23]: #withstore
+[23]: #usesetanddelete
 
-[24]: #parameters-7
+[24]: #parameters-8
 
-[25]: #examples-7
+[25]: #examples-5
 
-[26]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[26]: #usestorevalue
 
-[27]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[27]: #parameters-9
 
-[28]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+[28]: #usestorestate
 
-[29]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[29]: #examples-6
 
-[30]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[30]: #rawstore
+
+[31]: #withstore
+
+[32]: #parameters-10
+
+[33]: #examples-7
+
+[34]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[35]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[36]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[37]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
+
+[38]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean

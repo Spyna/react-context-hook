@@ -89,6 +89,13 @@ For example `store.set('username',  {name: 'spyna', email: 'me@spyna.it'})` will
 The store is exported as `store` from *react-context-hook*, so you can use it in the Components. 
 However for convenience, in React Components you can use the hooks exported from *react-context-hook*. 
 
+## Using store outside of React components
+
+`react-context-hook` exports a `store` object which can be used outside of React Components, but will affect the global state. This *object* has the following methods: 
+
+* reset: a function to reset the store state to the specified value: Eg: `store.reset({initialValue: 0})`. 
+
+This *store* is automatically initialized when you use the `withStore` function (`export default withStore(App)`). This means you can use it **only after** calling that function.
 
 ## License
 
