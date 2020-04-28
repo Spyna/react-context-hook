@@ -94,6 +94,27 @@ However for convenience, in React Components you can use the hooks exported from
 `react-context-hook` exports a `store` object which can be used outside of React Components, but will affect the global state. This *object* has the following methods: 
 
 * reset: a function to reset the store state to the specified value: Eg: `store.reset({initialValue: 0})`. 
+* set: a function that sets the specified key in the store. This function is equivaluent to the `useSetStoreValue` hook.
+* delete: a function that deletes the specified key from the store. This function is equivaluent to the `useDeleteStoreValue` hook.
+* getState: a function that returns the global state value of the store
+
+when using these functions, the React Components will re-render. 
+
+### Examples
+
+```JavaScript
+import {store} from 'react-context-hook' //import the raw store
+
+
+//In any JavaScript file you can use:
+
+store.set('user', {name: 'piero', email: 'nappiero@spyna.it'})
+store.delete('user')
+store.reset({user: null, loggedIn: false})
+const theState = store.getState()
+
+```
+
 
 This *store* is automatically initialized when you use the `withStore` function (`export default withStore(App)`). This means you can use it **only after** calling that function.
 
