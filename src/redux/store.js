@@ -1,12 +1,12 @@
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './reducer'
-import { logger, listernerMiddleware } from './middleware'
+import { logger, listenerMiddleware } from './middleware'
 
 export default function storeCreator(initialValue = {}, config = {}) {
   const { logging, listener } = config
 
   const middlewares = [
-    listener && listernerMiddleware(listener),
+    listener && listenerMiddleware(listener),
     logging && logger
   ].filter(Boolean)
 

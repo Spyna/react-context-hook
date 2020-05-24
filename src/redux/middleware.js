@@ -23,7 +23,7 @@ export const logger = ({ getState }) => (next) => (action) => {
   return returnValue
 }
 
-export const listernerMiddleware = (listener) => ({ getState }) => (next) => (
+export const listenerMiddleware = (listener) => ({ getState }) => (next) => (
   action
 ) => {
   const { key } = action.payload
@@ -33,3 +33,8 @@ export const listernerMiddleware = (listener) => ({ getState }) => (next) => (
   listener(getState().main, key, prevValue, nextValue)
   return value
 }
+
+/**
+ * @deprecated Use listenerMiddleware
+ */
+export const listernerMiddleware = listenerMiddleware
