@@ -27,7 +27,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run tests
-        run: yarn test
+        run: yarn && yarn test
 
       # Runs a set of commands using the runners shell
       - name: Try to build
