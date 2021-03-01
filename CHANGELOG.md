@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/Spyna/react-context-hook/compare/v2.2.0...v3.0.0) (2021-02-27)
+
+
+### Bug Fixes
+
+* typo in listernerMiddleware ([ed95d84](https://github.com/Spyna/react-context-hook/commit/ed95d84cfd8033cac92f35f6dc5c37ca4eb77eb3))
+
 ## [2.2.0](https://github.com/Spyna/react-context-hook/compare/v2.1.1...v2.2.0) (2020-04-28)
 
 
