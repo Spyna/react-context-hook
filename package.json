@@ -18,6 +18,7 @@
   "module": "dist/index.es.js",
   "unpkg": "dist/react-context-hook.js",
   "jsnext:main": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -36,7 +37,8 @@
     "release": "standard-version",
     "prettier": "prettier --write 'src/**/*.js' 'example/**/*.css' 'example/**/*.html' 'example/src/**/*.js'",
     "docs:build": "documentation build src/** -f html -o docs",
-    "docs:buildmd": "documentation build src/** -f md -o DOCS.md"
+    "docs:buildmd": "documentation build src/** -f md -o DOCS.md",
+    "declaration:build": "rm -f dist/index.d.ts && tsc -p declaration.tsconfig.json"
   },
   "peerDependencies": {
     "react": "^17.0.0",
