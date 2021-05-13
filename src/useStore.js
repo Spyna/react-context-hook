@@ -61,9 +61,10 @@ function useSelector(stateSelectorFn) {
  * `useStore` is a React Hook that access a value stored in the application global store. It returns the value, a function to update it (like React.useState) and a function to delete it.
  *
  * @param {string} key - The lookup key to find the saved value in the store
- * @param {any} defaultValue - The value if the value in the store is missing
+ * @param {any} [defaultValue] - The value if the value in the store is missing
  *
- * @returns {array} an array with length 3:<br>
+ * @returns {[any, (value: any) => Promise<void>, (value: any) => Promise<void>]}
+ * @return {array} an array with length 3:<br>
  * position 0 - the value of the data in the store.<br>
  * position 1 - a function *setValue* to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
  * position 2 - a function *deleteValue* to delete the value from the store. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`
@@ -86,7 +87,8 @@ function useStore(key, defaultValue) {
 /**
  * Returns a function to set or update a variable in the store. You want to use this hook when you just need to modify the store, not read or delete a value from it.
  * @param {string} key - the name of the variable to set in the store
- * @returns {Function} - a function to set a variable in the store with the given name When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`
+ * @returns {(value: any) => Promise<void>}
+ * @return {Function} - a function to set a variable in the store with the given name When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`
  *
  * @example
  * import {useSetStoreValue} from 'react-context-hook'
@@ -103,7 +105,8 @@ function useSetStoreValue(key) {
 /**
  * Returns a function to delete a variable in the store. You want to use this hook when you just need to delete a value in the store, not read or set a value from it.
  * @param {string} key - the name of the variable to set in the store
- * @returns {Function} - a function to delete a variable in the store with the given name. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`
+ * @returns {(value: any) => Promise<void>}
+ * @return {Function} - a function to delete a variable in the store with the given name. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`
  *
  * @example
  * import {useDeleteStoreValue} from 'react-context-hook'
@@ -121,8 +124,9 @@ function useDeleteStoreValue(key) {
  *This React hook returns an array to read and modify a value in the store:
  * `const [value, setValue] = useGetAndSet('a_lookup_key_in_the_store')`. The name of the variable in the arry is arbitrary and you can choose any string you like.
  * @param {string} key - The lookup key to find the saved value in the store
- * @param {any} defaultValue - The default value if missing
- * @returns {array} an array with length 2:<br>
+ * @param {any} [defaultValue] - The default value if missing
+ * @returns {[any, (value: any) => Promise<void>]}
+ * @return {array} an array with length 2:<br>
  * position 0 - the value of the data in the store.<br>
  * position 1 - a function *setValue* to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
  *
@@ -144,7 +148,8 @@ function useGetAndSet(key, defaultValue) {
  * `const [value, deleteValue] = useGetAndDelete('a_lookup_key_in_the_store')`. The name of the variable in the arry is arbitrary and you can choose any string you like.
  * @param {string} key - The lookup key to find the saved value in the store
  *
- * @returns {array} an array with length 2:<br>
+ * @returns {[any, (value: any) => Promise<void>]}
+ * @return {array} an array with length 2:<br>
  * position 0 - the value of the data in the store.<br>
  * position 1 - a function *deleteValue* to delete the data in the store. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`<br>
  *
@@ -164,7 +169,8 @@ function useGetAndDelete(key) {
  * `const [setValue, deleteValue] = useGetAndDelete('a_lookup_key_in_the_store')`. The name of the variable in the arry is arbitrary and you can choose any string you like.
  * @param {string} key - The lookup key to find the saved value in the store
  *
- * @returns {array} an array with length 2:<br>
+ * @returns {[(value: any) => Promise<void>, (value: any) => Promise<void>]}
+ * @return {array} an array with length 2:<br>
  * position 0 - a function *setValue* to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
  * position 1 - a function *deleteValue* to delete the data in the store. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`<br>
  *
@@ -184,7 +190,7 @@ function useSetAndDelete(key) {
  * @param {string} key - the name of the variable / value to be retrieved in the global store.
  * @param {any} [defaultValue] - an optional default value, if the value in the global store is not present.
  *
- * @returns {any} the value on the global store, or the default value if passed, or `undefined`
+ * @returns {any | undefined} the value on the global store, or the default value if passed, or `undefined`
  */
 function useStoreValue(key, defaultValue) {
   function stateSelector(state) {
@@ -197,7 +203,8 @@ function useStoreValue(key, defaultValue) {
 /**
  * Returns the whole store value, with all the variables stored in it. Changes to this object will not change the store
  *
- * @returns {object} - An object representing the whole store value in read only mode.
+ * @returns {Record}
+ * @return {object} - An object representing the whole store value in read only mode.
  *
  * @example
  * import {useStoreState} from 'react-context-hook'
