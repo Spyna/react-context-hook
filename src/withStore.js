@@ -10,10 +10,19 @@ import defaultConfig from './defaultConfig'
 let rawStore = createRawStore(createStore())
 
 /**
+ * @callback ConfigListener
+ * @param {Object} state
+ * @param {string} key
+ * @param {any} prevValue
+ * @param {any} nextValue
+ * @returns {void}
+ */
+
+/**
  * @param {ReactElement} WrappedComponent the component to connect with the store
- * @param {Object} initialValue an Object that will be the initial store value, or nothing
- * @param {Object} config the custom configuration. If nothing is passed, the default config will be used.
- * @param {Function} config.listener a function that is triggered each time the global state is modified. This function takes these parameters: (state, key, prevValue, nextValue). `state` is the value of the new state, `key` is the key that changed, `prevValue` is the old value of the key, `nextValule` is the new one.
+ * @param {Object} [initialValue] an Object that will be the initial store value, or nothing
+ * @param {Object} [config] the custom configuration. If nothing is passed, the default config will be used.
+ * @param {ConfigListener} config.listener a function that is triggered each time the global state is modified. This function takes these parameters: (state, key, prevValue, nextValue). `state` is the value of the new state, `key` is the key that changed, `prevValue` is the old value of the key, `nextValule` is the new one.
  * @param {boolean} config.logging - default `false` - if true it will log changes to console
  * @example
  *const initialState = { count: 10 }
