@@ -95,8 +95,8 @@ const [username, setUsername, deleteUsername] = useStore('username')
 
 Returns **[array][39]** an array with length 3:<br>
 position 0 - the value of the data in the store.<br>
-position 1 - a function _setValue_ to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
-position 2 - a function _deleteValue_ to delete the value from the store. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`
+position 1 - a function _setValue_ to modify the data in the store.<br>
+position 2 - a function _deleteValue_ to delete the value from the store.<br>
 
 ## useSetStoreValue
 
@@ -114,7 +114,7 @@ const setUsername = useSetStoreValue('username')
 <button onClick={()=> setUsername('my_username')}>set username</button>
 ```
 
-Returns **[Function][40]** a function to set a variable in the store with the given name When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`
+Returns **[Function][40]** a function to set a variable in the store with the given name<br>
 
 ## useDeleteStoreValue
 
@@ -129,10 +129,10 @@ Returns a function to delete a variable in the store. You want to use this hook 
 ```javascript
 import {useDeleteStoreValue} from 'react-context-hook'
 const deleteUsername = useDeleteStoreValue('username')
-<button onClick={()=> deleteUsername('my_username')}>set username</button>
+<button onClick={()=> deleteUsername()}>set username</button>
 ```
 
-Returns **[Function][40]** a function to delete a variable in the store with the given name. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`
+Returns **[Function][40]** a function to delete a variable in the store with the given name.
 
 ## useGetAndSet
 
@@ -157,7 +157,7 @@ const [username, setUsername] = useGetAndSet('username')
 
 Returns **[array][39]** an array with length 2:<br>
 position 0 - the value of the data in the store.<br>
-position 1 - a function _setValue_ to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
+position 1 - a function _setValue_ to modify the data in the store.<br>
 
 ## useGetAndDelete
 
@@ -179,7 +179,7 @@ const [username, deleteUsername] = useGetAndDelete('username')
 
 Returns **[array][39]** an array with length 2:<br>
 position 0 - the value of the data in the store.<br>
-position 1 - a function _deleteValue_ to delete the data in the store. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`<br>
+position 1 - a function _deleteValue_ to delete the data in the store.<br>
 
 ## useSetAndDelete
 
@@ -200,8 +200,8 @@ const [username, deleteUsername] = useGetAndDelete('username')
 ```
 
 Returns **[array][39]** an array with length 2:<br>
-position 0 - a function _setValue_ to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
-position 1 - a function _deleteValue_ to delete the data in the store. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`<br>
+position 0 - a function _setValue_ to modify the data in the store.<br>
+position 1 - a function _deleteValue_ to delete the data in the store.<br>
 
 ## useStoreValue
 
