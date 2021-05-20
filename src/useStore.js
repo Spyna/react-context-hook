@@ -63,11 +63,11 @@ function useSelector(stateSelectorFn) {
  * @param {string} key - The lookup key to find the saved value in the store
  * @param {any} [defaultValue] - The value if the value in the store is missing
  *
- * @returns {[any, (value: any) => Promise<void>, (value: any) => Promise<void>]}
+ * @returns {[any, (value: any) => void, () => void]}
  * @return {array} an array with length 3:<br>
  * position 0 - the value of the data in the store.<br>
- * position 1 - a function *setValue* to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
- * position 2 - a function *deleteValue* to delete the value from the store. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`
+ * position 1 - a function *setValue* to modify the data in the store.<br>
+ * position 2 - a function *deleteValue* to delete the value from the store.<br>
  *
  * @example
  * import {useStore} from 'react-context-hook'
@@ -87,8 +87,8 @@ function useStore(key, defaultValue) {
 /**
  * Returns a function to set or update a variable in the store. You want to use this hook when you just need to modify the store, not read or delete a value from it.
  * @param {string} key - the name of the variable to set in the store
- * @returns {(value: any) => Promise<void>}
- * @return {Function} - a function to set a variable in the store with the given name When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`
+ * @returns {(value: any) => void}
+ * @return {Function} - a function to set a variable in the store with the given name<br>
  *
  * @example
  * import {useSetStoreValue} from 'react-context-hook'
@@ -105,18 +105,18 @@ function useSetStoreValue(key) {
 /**
  * Returns a function to delete a variable in the store. You want to use this hook when you just need to delete a value in the store, not read or set a value from it.
  * @param {string} key - the name of the variable to set in the store
- * @returns {(value: any) => Promise<void>}
- * @return {Function} - a function to delete a variable in the store with the given name. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`
+ * @returns {(value: any) => void}
+ * @return {Function} - a function to delete a variable in the store with the given name.
  *
  * @example
  * import {useDeleteStoreValue} from 'react-context-hook'
  * const deleteUsername = useDeleteStoreValue('username')
- * <button onClick={()=> deleteUsername('my_username')}>set username</button>
+ * <button onClick={()=> deleteUsername()}>set username</button>
  */
 function useDeleteStoreValue(key) {
   const { store } = useContext(StoreContext)
-  return function (value) {
-    store.dispatch(deleteStoreValueAction(key, value))
+  return function () {
+    store.dispatch(deleteStoreValueAction(key))
   }
 }
 
@@ -125,10 +125,10 @@ function useDeleteStoreValue(key) {
  * `const [value, setValue] = useGetAndSet('a_lookup_key_in_the_store')`. The name of the variable in the arry is arbitrary and you can choose any string you like.
  * @param {string} key - The lookup key to find the saved value in the store
  * @param {any} [defaultValue] - The default value if missing
- * @returns {[any, (value: any) => Promise<void>]}
+ * @returns {[any, (value: any) => void]}
  * @return {array} an array with length 2:<br>
  * position 0 - the value of the data in the store.<br>
- * position 1 - a function *setValue* to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
+ * position 1 - a function *setValue* to modify the data in the store.<br>
  *
  * @example
  * import {useGetAndSet} from 'react-context-hook'
@@ -148,10 +148,10 @@ function useGetAndSet(key, defaultValue) {
  * `const [value, deleteValue] = useGetAndDelete('a_lookup_key_in_the_store')`. The name of the variable in the arry is arbitrary and you can choose any string you like.
  * @param {string} key - The lookup key to find the saved value in the store
  *
- * @returns {[any, (value: any) => Promise<void>]}
+ * @returns {[any, (value: any) => void]}
  * @return {array} an array with length 2:<br>
  * position 0 - the value of the data in the store.<br>
- * position 1 - a function *deleteValue* to delete the data in the store. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`<br>
+ * position 1 - a function *deleteValue* to delete the data in the store.<br>
  *
  * @example
  * import {useGetAndDelete} from 'react-context-hook'
@@ -169,10 +169,10 @@ function useGetAndDelete(key) {
  * `const [setValue, deleteValue] = useGetAndDelete('a_lookup_key_in_the_store')`. The name of the variable in the arry is arbitrary and you can choose any string you like.
  * @param {string} key - The lookup key to find the saved value in the store
  *
- * @returns {[(value: any) => Promise<void>, (value: any) => Promise<void>]}
+ * @returns {[(value: any) => void, () => void]}
  * @return {array} an array with length 2:<br>
- * position 0 - a function *setValue* to modify the data in the store. When used, this function return a promise that resolve nothing, thus you can use `setValue('a value').then(() => {doSomething() //when the store did update})`<br>
- * position 1 - a function *deleteValue* to delete the data in the store. When used, this function return a promise that resolve nothing, thus you can use `deleteValue('a value').then(() => {doSomething() //when the store did update})`<br>
+ * position 0 - a function *setValue* to modify the data in the store.<br>
+ * position 1 - a function *deleteValue* to delete the data in the store.<br>
  *
  * @example
  * import {useGetAndDelete} from 'react-context-hook'
