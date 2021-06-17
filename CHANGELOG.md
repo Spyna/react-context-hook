@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.6](https://github.com/Spyna/react-context-hook/compare/v3.0.5...v3.0.6) (2021-06-17)
+
+
+### Bug Fixes
+
+* useDeleteStoreValue does not take any argument ([0694e2d](https://github.com/Spyna/react-context-hook/commit/0694e2d6ade19911297c9a229dadc431e2b3a5bf))
+
 ### [3.0.5](https://github.com/Spyna/react-context-hook/compare/v3.0.4...v3.0.5) (2021-05-13)
 
 ### [3.0.4](https://github.com/Spyna/react-context-hook/compare/v3.0.3...v3.0.4) (2021-05-12)
