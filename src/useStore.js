@@ -60,10 +60,11 @@ function useSelector(stateSelectorFn) {
 /**
  * `useStore` is a React Hook that access a value stored in the application global store. It returns the value, a function to update it (like React.useState) and a function to delete it.
  *
+ * @template {any} T
  * @param {string} key - The lookup key to find the saved value in the store
- * @param {any} [defaultValue] - The value if the value in the store is missing
+ * @param {T} [defaultValue] - The value if the value in the store is missing
  *
- * @returns {[any, (value: any) => void, () => void]}
+ * @returns {[T, (value: T) => void, () => void]}
  * @return {array} an array with length 3:<br>
  * position 0 - the value of the data in the store.<br>
  * position 1 - a function *setValue* to modify the data in the store.<br>
@@ -86,8 +87,9 @@ function useStore(key, defaultValue) {
 
 /**
  * Returns a function to set or update a variable in the store. You want to use this hook when you just need to modify the store, not read or delete a value from it.
+ * @template {any} T
  * @param {string} key - the name of the variable to set in the store
- * @returns {(value: any) => void}
+ * @returns {(value: T) => void}
  * @return {Function} - a function to set a variable in the store with the given name<br>
  *
  * @example
@@ -104,8 +106,9 @@ function useSetStoreValue(key) {
 
 /**
  * Returns a function to delete a variable in the store. You want to use this hook when you just need to delete a value in the store, not read or set a value from it.
+ * @template {any} T
  * @param {string} key - the name of the variable to set in the store
- * @returns {(value: any) => void}
+ * @returns {(value: T) => void}
  * @return {Function} - a function to delete a variable in the store with the given name.
  *
  * @example
@@ -123,9 +126,10 @@ function useDeleteStoreValue(key) {
 /**
  *This React hook returns an array to read and modify a value in the store:
  * `const [value, setValue] = useGetAndSet('a_lookup_key_in_the_store')`. The name of the variable in the arry is arbitrary and you can choose any string you like.
+ * @template {any} T
  * @param {string} key - The lookup key to find the saved value in the store
- * @param {any} [defaultValue] - The default value if missing
- * @returns {[any, (value: any) => void]}
+ * @param {T} [defaultValue] - The default value if missing
+ * @returns {[T, (value: T) => void]}
  * @return {array} an array with length 2:<br>
  * position 0 - the value of the data in the store.<br>
  * position 1 - a function *setValue* to modify the data in the store.<br>
@@ -146,9 +150,10 @@ function useGetAndSet(key, defaultValue) {
 /**
  *This React hook returns an array to read and delete a value in the store:
  * `const [value, deleteValue] = useGetAndDelete('a_lookup_key_in_the_store')`. The name of the variable in the arry is arbitrary and you can choose any string you like.
+ * @template {any} T
  * @param {string} key - The lookup key to find the saved value in the store
  *
- * @returns {[any, (value: any) => void]}
+ * @returns {[T, (value: T) => void]}
  * @return {array} an array with length 2:<br>
  * position 0 - the value of the data in the store.<br>
  * position 1 - a function *deleteValue* to delete the data in the store.<br>
@@ -167,9 +172,10 @@ function useGetAndDelete(key) {
 /**
  *This React hook returns an array to set and delete a value in the store:
  * `const [setValue, deleteValue] = useGetAndDelete('a_lookup_key_in_the_store')`. The name of the variable in the arry is arbitrary and you can choose any string you like.
+ * @template {any} T
  * @param {string} key - The lookup key to find the saved value in the store
  *
- * @returns {[(value: any) => void, () => void]}
+ * @returns {[(value: T) => void, () => void]}
  * @return {array} an array with length 2:<br>
  * position 0 - a function *setValue* to modify the data in the store.<br>
  * position 1 - a function *deleteValue* to delete the data in the store.<br>
@@ -187,10 +193,11 @@ function useSetAndDelete(key) {
 
 /**
  *
+ * @template {any} T
  * @param {string} key - the name of the variable / value to be retrieved in the global store.
- * @param {any} [defaultValue] - an optional default value, if the value in the global store is not present.
+ * @param {T} [defaultValue] - an optional default value, if the value in the global store is not present.
  *
- * @returns {any | undefined} the value on the global store, or the default value if passed, or `undefined`
+ * @returns {T | undefined} the value on the global store, or the default value if passed, or `undefined`
  */
 function useStoreValue(key, defaultValue) {
   function stateSelector(state) {
