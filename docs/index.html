@@ -520,7 +520,7 @@
 
   <p><code>useStore</code> is a React Hook that access a value stored in the application global store. It returns the value, a function to update it (like React.useState) and a function to delete it.</p>
 
-    <div class='pre p1 fill-light mt0'>useStore(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, defaultValue: any?): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></div>
+    <div class='pre p1 fill-light mt0'>useStore(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, defaultValue: T?): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></div>
   
   
 
@@ -546,7 +546,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>defaultValue</span> <code class='quiet'>(any?)</code>
+            <span class='code bold'>defaultValue</span> <code class='quiet'>(T?)</code>
 	    The value if the value in the store is missing
 
           </div>
@@ -786,7 +786,7 @@ position 2 - a function
   <p>This React hook returns an array to read and modify a value in the store:
 <code>const [value, setValue] = useGetAndSet('a_lookup_key_in_the_store')</code>. The name of the variable in the arry is arbitrary and you can choose any string you like.</p>
 
-    <div class='pre p1 fill-light mt0'>useGetAndSet(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, defaultValue: any?): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></div>
+    <div class='pre p1 fill-light mt0'>useGetAndSet(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, defaultValue: T?): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a></div>
   
   
 
@@ -812,7 +812,7 @@ position 2 - a function
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>defaultValue</span> <code class='quiet'>(any?)</code>
+            <span class='code bold'>defaultValue</span> <code class='quiet'>(T?)</code>
 	    The default value if missing
 
           </div>
@@ -1070,7 +1070,7 @@ position 1 - a function
   
 
   
-    <div class='pre p1 fill-light mt0'>useStoreValue(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, defaultValue: any?): (any | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a>)</div>
+    <div class='pre p1 fill-light mt0'>useStoreValue(key: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, defaultValue: T?): (T | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a>)</div>
   
   
 
@@ -1096,7 +1096,7 @@ position 1 - a function
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>defaultValue</span> <code class='quiet'>(any?)</code>
+            <span class='code bold'>defaultValue</span> <code class='quiet'>(T?)</code>
 	    an optional default value, if the value in the global store is not present.
 
           </div>
@@ -1111,7 +1111,7 @@ position 1 - a function
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>(any | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a>)</code>:
+      <code>(T | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a>)</code>:
         the value on the global store, or the default value if passed, or 
 <code>undefined</code>
 
