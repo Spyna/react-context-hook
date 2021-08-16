@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.7](https://github.com/Spyna/react-context-hook/compare/v3.0.6...v3.0.7) (2021-08-16)
+
+
+### Bug Fixes
+
+* useStoreValue return type is incorrect. closes [#57](https://github.com/Spyna/react-context-hook/issues/57) ([205d98e](https://github.com/Spyna/react-context-hook/commit/205d98e30186cc4026bdb2dbac9cdd9e5d300d47))
+
 ### [3.0.6](https://github.com/Spyna/react-context-hook/compare/v3.0.5...v3.0.6) (2021-06-17)
 
 
