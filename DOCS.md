@@ -82,7 +82,7 @@ Returns **any** the global state value of the store
 ### Parameters
 
 -   `key` **[string][38]** The lookup key to find the saved value in the store
--   `defaultValue` **any?** The value if the value in the store is missing
+-   `defaultValue` **T?** The value if the value in the store is missing
 
 ### Examples
 
@@ -142,7 +142,7 @@ This React hook returns an array to read and modify a value in the store:
 ### Parameters
 
 -   `key` **[string][38]** The lookup key to find the saved value in the store
--   `defaultValue` **any?** The default value if missing
+-   `defaultValue` **T?** The default value if missing
 
 ### Examples
 
@@ -208,9 +208,7 @@ position 1 - a function _deleteValue_ to delete the data in the store.<br>
 ### Parameters
 
 -   `key` **[string][38]** the name of the variable / value to be retrieved in the global store.
--   `defaultValue` **any?** an optional default value, if the value in the global store is not present.
-
-Returns **(any | [undefined][41])** the value on the global store, or the default value if passed, or `undefined`
+-   `defaultValue` **T?** an optional default value, if the value in the global store is not present.
 
 ## useStoreState
 
@@ -252,8 +250,8 @@ Returns **void**
 -   `WrappedComponent` **ReactElement** the component to connect with the store
 -   `initialValue` **[Object][37]?** an Object that will be the initial store value, or nothing
 -   `config` **[Object][37]?** the custom configuration. If nothing is passed, the default config will be used.
-    -   `config.listener` **[ConfigListener][42]** a function that is triggered each time the global state is modified. This function takes these parameters: (state, key, prevValue, nextValue). `state` is the value of the new state, `key` is the key that changed, `prevValue` is the old value of the key, `nextValule` is the new one.
-    -   `config.logging` **[boolean][43]** default `false` - if true it will log changes to console
+    -   `config.listener` **[ConfigListener][41]** a function that is triggered each time the global state is modified. This function takes these parameters: (state, key, prevValue, nextValue). `state` is the value of the new state, `key` is the key that changed, `prevValue` is the old value of the key, `nextValule` is the new one.
+    -   `config.logging` **[boolean][42]** default `false` - if true it will log changes to console
 
 ### Examples
 
@@ -353,8 +351,6 @@ export default withStore(App, initialState, storeConfig)
 
 [40]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 
-[41]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined
+[41]: #configlistener
 
-[42]: #configlistener
-
-[43]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
+[42]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean
