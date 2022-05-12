@@ -1,6 +1,6 @@
 {
   "name": "react-context-hook",
-  "version": "3.0.7",
+  "version": "3.1.0",
   "description": "A React.js global state manager with Hooks and Context API",
   "author": "Spyna (https://github.com/Spyna)",
   "keyword": [
@@ -41,8 +41,8 @@
     "declaration:build": "rm -f dist/*.d.ts && tsc -p declaration.tsconfig.json"
   },
   "peerDependencies": {
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -83,8 +83,8 @@
     "gh-pages": "^2.0.1",
     "husky": "^3.0.9",
     "prettier": "^2.0.2",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "react-scripts": "^4.0.3",
     "rollup": "^2.39.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
