@@ -65,7 +65,7 @@ export default function () {
 ### Advanced use of withStore
 
 ```JS
-import { withStore} from 'react-context-hook'
+import { withStore } from 'react-context-hook'
 
 const initialState = { count: 10 }
 
